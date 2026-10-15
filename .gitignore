@@ -1,0 +1,12 @@
+node_modules/
+tools/node*/
+tools/node.zip
+tools/audio-work/
+.sites-runtime/
+artifacts/
+*.log
+
+.openai/
+.env
+.env.*
+*.zip

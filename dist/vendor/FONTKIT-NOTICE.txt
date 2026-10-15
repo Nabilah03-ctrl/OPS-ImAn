@@ -1,0 +1,10 @@
+@pdf-lib/fontkit 1.1.1
+Source: https://github.com/Hopding/fontkit
+License declared by the upstream package: MIT
+Author: Andrew Dillon
+Contributor / original fontkit author: Devon Govett
+License terms: https://opensource.org/license/mit
+
+This browser copy uses the upstream UMD bundle, followed by an ES-module
+export of globalThis.fontkit. It includes pako (see PAKO-LICENSE.txt).
+Regenerate using tools/prepare-certificate-vendors.mjs after npm install.

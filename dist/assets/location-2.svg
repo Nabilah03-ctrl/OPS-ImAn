@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="250" viewBox="0 0 320 250" role="img" aria-label="Bilik Petunjuk dengan buku nota, kanta pembesar, fail dan lencana polis">
+<rect width="320" height="250" rx="28" fill="#FFF7E5"/>
+<ellipse cx="160" cy="220" rx="116" ry="17" fill="#87BCA7" opacity=".25"/>
+<g stroke="#193C68" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<rect x="43" y="63" width="234" height="151" rx="8" fill="#FFF8E8"/>
+<rect x="33" y="49" width="254" height="25" rx="6" fill="#3366DB"/>
+<path d="M42 76H278" stroke="#FFC95A" stroke-width="7"/>
+<rect x="61" y="92" width="113" height="73" rx="5" fill="#E0EFF4"/>
+<rect x="70" y="102" width="36" height="48" rx="4" fill="#FFF8E8"/>
+<path d="M77 112H98M77 122H98M77 132H91" stroke="#8CB3CC"/>
+<path d="M70 108H75M70 118H75M70 128H75M70 138H75" stroke="#FFC95A"/>
+<circle cx="142" cy="123" r="15" fill="#BCE5F5" stroke-width="4"/>
+<path d="M132 134L119 149" stroke-width="7"/>
+<path d="M135 115Q140 110 147 114" stroke="#fff"/>
+<rect x="191" y="98" width="65" height="111" rx="4" fill="#ABD7D4"/>
+<path d="M191 131H256M191 165H256"/>
+<path d="M199 123V109H212V123M214 123V105H227V123M229 123V111H242V123" fill="#FFC95A" stroke-width="2"/>
+<path d="M211 145H236M211 180H236" stroke-width="4"/>
+<rect x="60" y="166" width="125" height="12" rx="3" fill="#DDAA72"/>
+<path d="M70 179V210M173 179V210" stroke-width="6"/>
+<path d="M72 165V153H105L110 157H154V165Z" fill="#FFC95A" stroke-width="2"/>
+<rect x="137" y="25" width="46" height="51" rx="6" fill="#E5F2FF"/>
+<path d="M160 34Q168 38 176 36V50Q175 62 160 68Q145 62 144 50V36Q152 38 160 34Z" fill="#FFC95A" stroke-width="2"/>
+<path d="M160 41L163 47 170 48 165 52 166 59 160 56 154 59 155 52 150 48 157 47Z" fill="#FFF8E8" stroke="none"/>
+<path d="M37 213H283" stroke="#CDDCD9" stroke-width="10"/>
+</g></svg>

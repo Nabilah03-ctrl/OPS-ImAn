@@ -1,0 +1,150 @@
+{
+  "mazePathLength": 109,
+  "reports": [
+    {
+      "filename": "maze-a3.pdf",
+      "pages": 1
+    },
+    {
+      "filename": "maze-a3-ink.pdf",
+      "pages": 1
+    },
+    {
+      "filename": "maze-a4.pdf",
+      "pages": 2
+    },
+    {
+      "filename": "maze-a4-ink.pdf",
+      "pages": 2
+    },
+    {
+      "filename": "mission-cards.pdf",
+      "pages": 3
+    },
+    {
+      "filename": "mission-cards-ink.pdf",
+      "pages": 3
+    },
+    {
+      "filename": "challenge-cards.pdf",
+      "pages": 6
+    },
+    {
+      "filename": "challenge-cards-ink.pdf",
+      "pages": 6
+    },
+    {
+      "filename": "base-cards.pdf",
+      "pages": 1
+    },
+    {
+      "filename": "base-cards-ink.pdf",
+      "pages": 1
+    },
+    {
+      "filename": "prefix-cards.pdf",
+      "pages": 1
+    },
+    {
+      "filename": "prefix-cards-ink.pdf",
+      "pages": 1
+    },
+    {
+      "filename": "fullword-cards.pdf",
+      "pages": 2
+    },
+    {
+      "filename": "fullword-cards-ink.pdf",
+      "pages": 2
+    },
+    {
+      "filename": "picture-cards.pdf",
+      "pages": 1
+    },
+    {
+      "filename": "picture-cards-ink.pdf",
+      "pages": 1
+    },
+    {
+      "filename": "sentence-board.pdf",
+      "pages": 2
+    },
+    {
+      "filename": "sentence-board-ink.pdf",
+      "pages": 2
+    },
+    {
+      "filename": "sentence-cards.pdf",
+      "pages": 2
+    },
+    {
+      "filename": "sentence-cards-ink.pdf",
+      "pages": 2
+    },
+    {
+      "filename": "tokens.pdf",
+      "pages": 1
+    },
+    {
+      "filename": "tokens-ink.pdf",
+      "pages": 1
+    },
+    {
+      "filename": "power-tokens.pdf",
+      "pages": 2
+    },
+    {
+      "filename": "power-tokens-ink.pdf",
+      "pages": 2
+    },
+    {
+      "filename": "passport.pdf",
+      "pages": 2
+    },
+    {
+      "filename": "passport-ink.pdf",
+      "pages": 2
+    },
+    {
+      "filename": "worksheet.pdf",
+      "pages": 3
+    },
+    {
+      "filename": "worksheet-ink.pdf",
+      "pages": 3
+    },
+    {
+      "filename": "observation.pdf",
+      "pages": 4
+    },
+    {
+      "filename": "observation-ink.pdf",
+      "pages": 4
+    },
+    {
+      "filename": "answer-rubric.pdf",
+      "pages": 5
+    },
+    {
+      "filename": "answer-rubric-ink.pdf",
+      "pages": 5
+    },
+    {
+      "filename": "certificate.pdf",
+      "pages": 1
+    },
+    {
+      "filename": "certificate-ink.pdf",
+      "pages": 1
+    },
+    {
+      "filename": "kit-cover.pdf",
+      "pages": 3
+    },
+    {
+      "filename": "kit-cover-ink.pdf",
+      "pages": 3
+    }
+  ],
+  "failures": []
+}

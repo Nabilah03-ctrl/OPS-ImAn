@@ -1,0 +1,239 @@
+{
+  "mode": "built-in image_gen",
+  "date": "2026-10-15",
+  "directory": "dist/assets/v2",
+  "assets": [
+    {
+      "name": "action-crossing.png",
+      "width": 1223,
+      "height": 1286,
+      "alpha": true,
+      "bytes": 1854718,
+      "sha256": "c4406da2646454ed73d1bab5779771953b4e5143388662cc38d52a7253c7ae15"
+    },
+    {
+      "name": "action-fallen.png",
+      "width": 1153,
+      "height": 1364,
+      "alpha": true,
+      "bytes": 1203373,
+      "sha256": "2f4ded37ef24a23ace0ff1c9e00ff6767dc1aa60aeec980a7b894aff3e653d4d"
+    },
+    {
+      "name": "action-helping.png",
+      "width": 1536,
+      "height": 1024,
+      "alpha": true,
+      "bytes": 1903847,
+      "sha256": "50968f11a675bb10f00b182067a80eeeaa51af42482274109167b862f9becc2e"
+    },
+    {
+      "name": "action-reading.png",
+      "width": 1536,
+      "height": 1024,
+      "alpha": true,
+      "bytes": 1333708,
+      "sha256": "e9047385bc28dec4414900be5519896144997e0a648ad536be513aed36272ab0"
+    },
+    {
+      "name": "action-returning.png",
+      "width": 1268,
+      "height": 1240,
+      "alpha": true,
+      "bytes": 1590722,
+      "sha256": "7fa0b7a3f56de6fc71e7b55a5c8c25557c2ec90a6f1e43d06ab5c4d905687b49"
+    },
+    {
+      "name": "action-searching.png",
+      "width": 1536,
+      "height": 1024,
+      "alpha": true,
+      "bytes": 2118556,
+      "sha256": "478dfb5e34ffc3432d6bafb7fd201a38fabd97f2c3969a273704e3ad60f034a8"
+    },
+    {
+      "name": "action-sweeping.png",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true,
+      "bytes": 1947341,
+      "sha256": "4993c86b47fd6e897102e6ead511106cf459f1e150920bf8ae1218c3476f6eb5"
+    },
+    {
+      "name": "action-taking.png",
+      "width": 1094,
+      "height": 1438,
+      "alpha": true,
+      "bytes": 1432127,
+      "sha256": "59cce617d21108067941de68483cca66bd2bf34f9422af7b6c3e4bd1f441c132"
+    },
+    {
+      "name": "action-traffic.png",
+      "width": 1536,
+      "height": 1024,
+      "alpha": true,
+      "bytes": 2267692,
+      "sha256": "f10450d7792fdc2bb89228a27d635af1153457f163d4aa86244bda38d9b13c81"
+    },
+    {
+      "name": "action-walking.png",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true,
+      "bytes": 1893118,
+      "sha256": "9389a016bf32a90c72ebb5754e0ac468751f2ee7d49becd20d2e70230d35c483"
+    },
+    {
+      "name": "action-writing.png",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true,
+      "bytes": 1712856,
+      "sha256": "841c06a345928bcb197243090987b3455c81a88ad2573a4ec6291fe42d132c70"
+    },
+    {
+      "name": "equipment.png",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true,
+      "bytes": 1417183,
+      "sha256": "3184049ed11c736ab9c953369e3a8df543b625e1179f635d37cf4fa89b18e90c"
+    },
+    {
+      "name": "helicopter.png",
+      "width": 1536,
+      "height": 1024,
+      "alpha": true,
+      "bytes": 1678808,
+      "sha256": "0968a8774158d5e016ff6f37e3e70f6ac9f9fad26f776c4daa0c2fd04a48182e"
+    },
+    {
+      "name": "hero-city.png",
+      "width": 1536,
+      "height": 1024,
+      "alpha": false,
+      "bytes": 2813174,
+      "sha256": "db2645ff3f9833b9d9ac9408db33e165756aa83d764a1b8217d8f4bcca9a9a57"
+    },
+    {
+      "name": "location-1.png",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true,
+      "bytes": 1751296,
+      "sha256": "efab3b1737571a9cd782afb9f2bd414a17d16e034f4e6ab015efd9c44776f033"
+    },
+    {
+      "name": "location-2.png",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true,
+      "bytes": 1692492,
+      "sha256": "89f8e0713fe4b1a7c635051786860d1376ab463ca96474566c9777449e500c66"
+    },
+    {
+      "name": "location-3.png",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true,
+      "bytes": 1560516,
+      "sha256": "fd5d995386f8cd011ee048d317ab740da945bc9944db8b6e8373450c38fbcf83"
+    },
+    {
+      "name": "location-4.png",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true,
+      "bytes": 1835276,
+      "sha256": "12b0ee3ee25c3d1b1110ff1b2baa02c40e77a29d7b84e106376d04c1b201c8cf"
+    },
+    {
+      "name": "location-5.png",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true,
+      "bytes": 1654301,
+      "sha256": "9b9f0209b46d8589b712384fa28be3d0df88749d60fa8345d16b445377ef5c58"
+    },
+    {
+      "name": "location-6.png",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true,
+      "bytes": 1634368,
+      "sha256": "e51620d5c012b6ad79728ae6eb390635b9fb2a7c4aa8a815809c2bbc1e93c84a"
+    },
+    {
+      "name": "motorcycle.png",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true,
+      "bytes": 1745994,
+      "sha256": "bbc8bdbfee8aeac416f56b54f742708e1a50cb8d28124e1c573c643517dde9c4"
+    },
+    {
+      "name": "patrol-car.png",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true,
+      "bytes": 1262686,
+      "sha256": "a717b1acb339b41c16039390c20269513449efc358271c1a24c8a054c8ad95a4"
+    },
+    {
+      "name": "police-boy.png",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true,
+      "bytes": 901845,
+      "sha256": "5fdeeed4c667bf5f97d3477e0c5f290e554e8cd252e21aa9bb718ce5e7912f4f"
+    },
+    {
+      "name": "police-girl.png",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true,
+      "bytes": 982782,
+      "sha256": "2886d8fa9f19741cf38db360d0d432d4800b33e6497fc41cd1915a95d6b52540"
+    },
+    {
+      "name": "police-hijab.png",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true,
+      "bytes": 868082,
+      "sha256": "5746e9aa140313f261c867750dbd2089b82bc12349abdaf95f06e85e9211c27d"
+    },
+    {
+      "name": "pose-celebrate.png",
+      "width": 1536,
+      "height": 1024,
+      "alpha": true,
+      "bytes": 2352403,
+      "sha256": "9fd1414b2572ef0a67a9bb797ccaae072b41c9f61bbf047a706f18ec04e9e5a4"
+    },
+    {
+      "name": "pose-directions.png",
+      "width": 1536,
+      "height": 1024,
+      "alpha": true,
+      "bytes": 1830534,
+      "sha256": "a1f8407d833512146c79c0ecf16a2656b820fcdeb3f2ca712216b469b4a574d2"
+    },
+    {
+      "name": "pose-pilot.png",
+      "width": 1536,
+      "height": 1024,
+      "alpha": true,
+      "bytes": 2033446,
+      "sha256": "edbf9dba9b126af7230d685541165d70c909282bc0c02e900b55e9b54886fdcb"
+    },
+    {
+      "name": "pose-radio.png",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true,
+      "bytes": 1820225,
+      "sha256": "6cb072f4eecd51dafad731a80b9c704dc8752f347f086caef88b508bbb821490"
+    }
+  ]
+}
