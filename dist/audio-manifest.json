@@ -279,7 +279,62 @@
     "Pusat Trafik. Gunakan Kata.": "assets/audio/c24c8f62d82cbe38.mp3",
     "Kompleks Keselamatan. Semak dan Baiki.": "assets/audio/d9f1f4c83f5fff23.mp3",
     "Garaj dan Pusat Bantuan Polis. Pilih dan Beri Sebab.": "assets/audio/609d8319e35d69f3.mp3",
-    "Pusat Kawalan Udara dan Helipad. Cipta Laporan Mini.": "assets/audio/163956f97ab57a3d.mp3"
+    "Pusat Kawalan Udara dan Helipad. Cipta Laporan Mini.": "assets/audio/163956f97ab57a3d.mp3",
+    "Pilih kata berimbuhan awalan yang sesuai.": "assets/audio/9a80f707aef0e2dc.mp3",
+    "Lihat gambar. Anggota polis membaca buku nota.": "assets/audio/0211cdbe3fc5745e.mp3",
+    "Anggota polis membaca buku nota. baca menjadi membaca.": "assets/audio/ee20515462262af1.mp3",
+    "Lihat gambar. Anggota polis membantu warga emas.": "assets/audio/84d4412330fb5060.mp3",
+    "Anggota polis membantu warga emas. bantu menjadi membantu.": "assets/audio/33f503babae44422.mp3",
+    "warga emas.": "assets/audio/6eda18a4ac452b66.mp3",
+    "Lihat gambar. Anggota polis mencari beg yang tercicir.": "assets/audio/cd64310b8fb0066c.mp3",
+    "Anggota polis mencari beg yang tercicir. cari menjadi mencari.": "assets/audio/a6dd97b3015ce924.mp3",
+    "beg": "assets/audio/e80f71a8d7311927.mp3",
+    "yang tercicir.": "assets/audio/7731875e44c9bb76.mp3",
+    "Lihat gambar. Anggota polis mengawal lalu lintas.": "assets/audio/8a53eb08d6106be5.mp3",
+    "Anggota polis mengawal lalu lintas. kawal menjadi mengawal.": "assets/audio/99af604531c38b27.mp3",
+    "Pilih kad kata dasar A, kemudian kad B yang sepadan. Tekan Semak.": "assets/audio/e37ff8a43a1b763c.mp3",
+    "Padankan kata dasar baca dengan membaca.": "assets/audio/b673b0fec537b245.mp3",
+    "Padankan kata dasar bantu dengan membantu.": "assets/audio/6e3c39934bca9218.mp3",
+    "Padankan kata dasar cari dengan mencari.": "assets/audio/c3bbecfb21be779f.mp3",
+    "Padankan kata dasar kawal dengan mengawal.": "assets/audio/097b361c7efd68e6.mp3",
+    "Cari perkataan dalam grid. Pilih huruf pertama dan huruf terakhir, atau seret. Kemudian tekan Semak.": "assets/audio/519add093dc41426.mp3",
+    "Cari huruf pertama M. Ikut satu baris atau lajur.": "assets/audio/af1fcac0e69b9638.mp3",
+    "Tekan kepingan mengikut urutan untuk membentuk perkataan. Kemudian tekan Semak.": "assets/audio/9fb7e062cc583958.mp3",
+    "Mulakan dengan kepingan mem.": "assets/audio/d4eaf3f8b3d496af.mp3",
+    "Mulakan dengan kepingan men.": "assets/audio/4f4801901fff4a37.mp3",
+    "Mulakan dengan kepingan me.": "assets/audio/a7624958d6834f7d.mp3",
+    "Pilih tempat kosong, kemudian pilih perkataan. Tekan Semak.": "assets/audio/f89b4428e0e345ce.mp3",
+    "Dengar ayat dan lihat gambar. Anggota polis membaca buku nota.": "assets/audio/d5cd1fc21995eab2.mp3",
+    "Dengar ayat dan lihat gambar. Anggota polis membantu warga emas.": "assets/audio/d813a59238576fa6.mp3",
+    "Dengar ayat dan lihat gambar. Anggota polis mencari beg yang tercicir.": "assets/audio/c5519e4ec53d8dbb.mp3",
+    "Dengar ayat dan lihat gambar. Anggota polis mengawal lalu lintas.": "assets/audio/df5b1c2d150228d0.mp3",
+    "Seret kad ke ruang ayat, atau pilih kad kemudian pilih ruang. Tekan Semak apabila ayat siap.": "assets/audio/36ea136e0b2222af.mp3",
+    "Letakkan kad Anggota polis pada ruang pertama.": "assets/audio/50f156f856f41ae8.mp3",
+    "Balai Polis. Pilih Jawapan.": "assets/audio/aa8a01d1159c5121.mp3",
+    "Pusat Siasatan dan Petunjuk. Padankan A dengan B.": "assets/audio/9f11c1d7b5a3d441.mp3",
+    "Pusat Trafik. Cari Perkataan.": "assets/audio/92b1201ea7220bd6.mp3",
+    "Kompleks Keselamatan. Susun Perkataan.": "assets/audio/605570678d37d160.mp3",
+    "Garaj dan Pusat Bantuan Polis. Isi Tempat Kosong.": "assets/audio/8cccca91791d742e.mp3",
+    "Pusat Kawalan Udara dan Helipad. Bina Ayat.": "assets/audio/913847674eb98a70.mp3",
+    "Gabungkan kod daripada Stesen 1 hingga Stesen 6 untuk membuka Peti Kejayaan!": "assets/audio/8745f9338a312039.mp3",
+    "Tahniah! Kamu berjaya menyelesaikan semua misi OPS ImAn!": "assets/audio/adf769ab60ba3af0.mp3",
+    "Kod belum tepat. Semak susunan stesen dan cuba lagi.": "assets/audio/e3b20b06498eecd6.mp3",
+    "ca": "assets/audio/6959097001d10501.mp3",
+    "mem": "assets/audio/6fe2e0f6071ac2bb.mp3",
+    "ba": "assets/audio/970f519c2cadbcef.mp3",
+    "Anggota polis membantu warga emas.": "assets/audio/99e6fbdf15d02964.mp3",
+    "tu": "assets/audio/764c4c7b78d6fd3b.mp3",
+    "ban": "assets/audio/b2a96c3d3fc2b6ac.mp3",
+    "ri": "assets/audio/396a14ab206e2b44.mp3",
+    "men": "assets/audio/08e3c4c91ca5c58e.mp3",
+    "wal": "assets/audio/27a75a1c9d8f31b0.mp3",
+    "me": "assets/audio/2744ccd10c7533bd.mp3",
+    "nga": "assets/audio/9b37312c0240171b.mp3",
+    "Padankan kad A dengan B. Kemudian Semak.": "assets/audio/34ea141162d1764f.mp3",
+    "Cari kata. Pilih huruf pertama dan terakhir.": "assets/audio/2411d9b561ae7654.mp3",
+    "Susun kepingan menjadi perkataan.": "assets/audio/cf1e05b225a495bc.mp3",
+    "Lengkapkan ayat dengan kata yang sesuai.": "assets/audio/5af97f97dd602c7c.mp3",
+    "Susun kad menjadi ayat yang betul.": "assets/audio/39116eeb39961257.mp3"
   },
   "details": {
     "933c0dd736492657": {
@@ -1145,8 +1200,228 @@
     "163956f97ab57a3d": {
       "bytes": 38784,
       "spokenText": "Pusat Kawalan Udara dan Helipad. Cipta Laporan Mini."
+    },
+    "9a80f707aef0e2dc": {
+      "bytes": 27648,
+      "spokenText": "Pilih kata berimbuhan awalan yang sesuai."
+    },
+    "0211cdbe3fc5745e": {
+      "bytes": 35136,
+      "spokenText": "Lihat gambar. Anggota polis membaca buku nota."
+    },
+    "ee20515462262af1": {
+      "bytes": 40896,
+      "spokenText": "Anggota polis membaca buku nota. baca menjadi membaca."
+    },
+    "84d4412330fb5060": {
+      "bytes": 37056,
+      "spokenText": "Lihat gambar. Anggota polis membantu warga emas."
+    },
+    "33f503babae44422": {
+      "bytes": 44544,
+      "spokenText": "Anggota polis membantu warga emas. bantu menjadi membantu."
+    },
+    "6eda18a4ac452b66": {
+      "bytes": 12096,
+      "spokenText": "warga emas."
+    },
+    "cd64310b8fb0066c": {
+      "bytes": 39360,
+      "spokenText": "Lihat gambar. Anggota polis mencari beg yang tercicir."
+    },
+    "a6dd97b3015ce924": {
+      "bytes": 45120,
+      "spokenText": "Anggota polis mencari beg yang tercicir. cari menjadi mencari."
+    },
+    "e80f71a8d7311927": {
+      "bytes": 6336,
+      "spokenText": "beg"
+    },
+    "7731875e44c9bb76": {
+      "bytes": 12864,
+      "spokenText": "yang tercicir."
+    },
+    "8a53eb08d6106be5": {
+      "bytes": 35712,
+      "spokenText": "Lihat gambar. Anggota polis mengawal lalu lintas."
+    },
+    "99af604531c38b27": {
+      "bytes": 41472,
+      "spokenText": "Anggota polis mengawal lalu lintas. kawal menjadi mengawal."
+    },
+    "e37ff8a43a1b763c": {
+      "bytes": 46464,
+      "spokenText": "Pilih kad kata dasar A, kemudian kad B yang sepadan. Tekan Semak."
+    },
+    "b673b0fec537b245": {
+      "bytes": 27456,
+      "spokenText": "Padankan kata dasar baca dengan membaca."
+    },
+    "6e3c39934bca9218": {
+      "bytes": 30144,
+      "spokenText": "Padankan kata dasar bantu dengan membantu."
+    },
+    "c3bbecfb21be779f": {
+      "bytes": 27840,
+      "spokenText": "Padankan kata dasar cari dengan mencari."
+    },
+    "097b361c7efd68e6": {
+      "bytes": 28608,
+      "spokenText": "Padankan kata dasar kawal dengan mengawal."
+    },
+    "519add093dc41426": {
+      "bytes": 66624,
+      "spokenText": "Cari perkataan dalam grid. Pilih huruf pertama dan huruf terakhir, atau seret. Kemudian tekan Semak."
+    },
+    "af1fcac0e69b9638": {
+      "bytes": 34944,
+      "spokenText": "Cari huruf pertama M. Ikut satu baris atau lajur."
+    },
+    "9fb7e062cc583958": {
+      "bytes": 53184,
+      "spokenText": "Tekan kepingan mengikut urutan untuk membentuk perkataan. Kemudian tekan Semak."
+    },
+    "d4eaf3f8b3d496af": {
+      "bytes": 19776,
+      "spokenText": "Mulakan dengan kepingan mem."
+    },
+    "4f4801901fff4a37": {
+      "bytes": 19968,
+      "spokenText": "Mulakan dengan kepingan men."
+    },
+    "a7624958d6834f7d": {
+      "bytes": 19392,
+      "spokenText": "Mulakan dengan kepingan me."
+    },
+    "f89b4428e0e345ce": {
+      "bytes": 41856,
+      "spokenText": "Pilih tempat kosong, kemudian pilih perkataan. Tekan Semak."
+    },
+    "d5cd1fc21995eab2": {
+      "bytes": 44736,
+      "spokenText": "Dengar ayat dan lihat gambar. Anggota polis membaca buku nota."
+    },
+    "d813a59238576fa6": {
+      "bytes": 46656,
+      "spokenText": "Dengar ayat dan lihat gambar. Anggota polis membantu warga emas."
+    },
+    "c5519e4ec53d8dbb": {
+      "bytes": 48960,
+      "spokenText": "Dengar ayat dan lihat gambar. Anggota polis mencari beg yang tercicir."
+    },
+    "df5b1c2d150228d0": {
+      "bytes": 45312,
+      "spokenText": "Dengar ayat dan lihat gambar. Anggota polis mengawal lalu lintas."
+    },
+    "36ea136e0b2222af": {
+      "bytes": 64512,
+      "spokenText": "Seret kad ke ruang ayat, atau pilih kad kemudian pilih ruang. Tekan Semak apabila ayat siap."
+    },
+    "50f156f856f41ae8": {
+      "bytes": 29952,
+      "spokenText": "Letakkan kad Anggota polis pada ruang pertama."
+    },
+    "aa8a01d1159c5121": {
+      "bytes": 24576,
+      "spokenText": "Balai Polis. Pilih Jawapan."
+    },
+    "9f11c1d7b5a3d441": {
+      "bytes": 36672,
+      "spokenText": "Pusat Siasatan dan Petunjuk. Padankan A dengan B."
+    },
+    "92b1201ea7220bd6": {
+      "bytes": 25728,
+      "spokenText": "Pusat Trafik. Cari Perkataan."
+    },
+    "605570678d37d160": {
+      "bytes": 32448,
+      "spokenText": "Kompleks Keselamatan. Susun Perkataan."
+    },
+    "8cccca91791d742e": {
+      "bytes": 36672,
+      "spokenText": "Garaj dan Pusat Bantuan Polis. Isi Tempat Kosong."
+    },
+    "913847674eb98a70": {
+      "bytes": 34368,
+      "spokenText": "Pusat Kawalan Udara dan Helipad. Bina Ayat."
+    },
+    "8745f9338a312039": {
+      "bytes": 57024,
+      "spokenText": "Gabungkan kod daripada Stesen 1 hingga Stesen 6 untuk membuka Peti Kejayaan!"
+    },
+    "adf769ab60ba3af0": {
+      "bytes": 42240,
+      "spokenText": "Tahniah! Kamu berjaya menyelesaikan semua misi Ops Iman!"
+    },
+    "e3b20b06498eecd6": {
+      "bytes": 40128,
+      "spokenText": "Kod belum tepat. Semak susunan stesen dan cuba lagi."
+    },
+    "6959097001d10501": {
+      "bytes": 7488,
+      "spokenText": "ca"
+    },
+    "6fe2e0f6071ac2bb": {
+      "bytes": 7488,
+      "spokenText": "mem"
+    },
+    "970f519c2cadbcef": {
+      "bytes": 8064,
+      "spokenText": "ba"
+    },
+    "99e6fbdf15d02964": {
+      "bytes": 25920,
+      "spokenText": "Anggota polis membantu warga emas."
+    },
+    "764c4c7b78d6fd3b": {
+      "bytes": 6720,
+      "spokenText": "tu"
+    },
+    "b2a96c3d3fc2b6ac": {
+      "bytes": 8256,
+      "spokenText": "ban"
+    },
+    "396a14ab206e2b44": {
+      "bytes": 7488,
+      "spokenText": "ri"
+    },
+    "08e3c4c91ca5c58e": {
+      "bytes": 7488,
+      "spokenText": "men"
+    },
+    "27a75a1c9d8f31b0": {
+      "bytes": 7296,
+      "spokenText": "wal"
+    },
+    "2744ccd10c7533bd": {
+      "bytes": 7488,
+      "spokenText": "me"
+    },
+    "9b37312c0240171b": {
+      "bytes": 7488,
+      "spokenText": "nga"
+    },
+    "34ea141162d1764f": {
+      "bytes": 27840,
+      "spokenText": "Padankan kad A dengan B. Kemudian Semak."
+    },
+    "2411d9b561ae7654": {
+      "bytes": 33216,
+      "spokenText": "Cari kata. Pilih huruf pertama dan terakhir."
+    },
+    "cf1e05b225a495bc": {
+      "bytes": 24192,
+      "spokenText": "Susun kepingan menjadi perkataan."
+    },
+    "5af97f97dd602c7c": {
+      "bytes": 27456,
+      "spokenText": "Lengkapkan ayat dengan kata yang sesuai."
+    },
+    "39116eeb39961257": {
+      "bytes": 24960,
+      "spokenText": "Susun kad menjadi ayat yang betul."
     }
   },
   "failures": [],
-  "generatedAt": "2026-10-15T07:10:06.188Z"
+  "generatedAt": "2026-10-20T12:26:56.143Z"
 }

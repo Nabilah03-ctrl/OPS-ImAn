@@ -1,3 +1,4 @@
+let firedAtPoint=null;
 let tracker=null,stream=null,running=false,request=0,lastFrame=-1,lastDetect=0,smoothed=null,raw=null,offset={x:0,y:0},target=null,dwellStart=0,fired=false,lastMove=0,missing=true,options={sensitivity:1.2,onStatus:()=>{},onMove:()=>{},onError:()=>{}};
 const $=s=>document.querySelector(s);
 function clearTarget(){target?.classList.remove('hand-hover');target=null;dwellStart=0;fired=false;const ring=$('.dwell-ring');if(ring)ring.style.strokeDashoffset='176';}
@@ -21,12 +22,13 @@ function loop(now){
   if(now-lastDetect>70&&v.readyState>=2&&v.currentTime!==lastFrame){lastDetect=now;lastFrame=v.currentTime;const result=tracker.detectForVideo(v,now),tip=result.landmarks?.[0]?.[8];
    if(!tip){if(!missing)options.onStatus(false);missing=true;smoothed=null;clearTarget();$('#hand-cursor').hidden=true;$('#hand-status').textContent='Tunjukkan tangan kamu di hadapan kamera.';}
    else{if(missing)options.onStatus(true);missing=false;raw={x:1-tip.x,y:tip.y};const mapped={x:Math.max(.015,Math.min(.985,(raw.x+offset.x-.5)*options.sensitivity+.5))*innerWidth,y:Math.max(.015,Math.min(.985,(raw.y+offset.y-.5)*options.sensitivity+.5))*innerHeight};smoothed=smoothed?{x:smoothed.x+(mapped.x-smoothed.x)*.32,y:smoothed.y+(mapped.y-smoothed.y)*.32}:mapped;const cursor=$('#hand-cursor');cursor.hidden=false;cursor.style.left=smoothed.x+'px';cursor.style.top=smoothed.y+'px';$('#hand-status').textContent='Tuding dan tahan. Kanta ialah penanda kamu.';const el=document.elementFromPoint(smoothed.x,smoothed.y)?.closest('button,[data-hand]');const next=el&&!el.disabled&&!el.closest('[inert]')?el:null;
-    if(next!==target){clearTarget();target=next;dwellStart=now;target?.classList.add('hand-hover');}
+    if(firedAtPoint&&(!next||Math.hypot(smoothed.x-firedAtPoint.x,smoothed.y-firedAtPoint.y)>44))firedAtPoint=null;
+    if(next!==target){clearTarget();target=next;dwellStart=now;fired=!!firedAtPoint;target?.classList.add('hand-hover');}
     if(target?.dataset.dir){if(now-lastMove>360){options.onMove(target.dataset.dir);lastMove=now;}}
-    else if(target&&!fired){const progress=Math.min((now-dwellStart)/1250,1);$('.dwell-ring').style.strokeDashoffset=String(176*(1-progress));if(progress>=1){fired=true;target.click();}}
+    else if(target&&!fired){const progress=Math.min((now-dwellStart)/1250,1);$('.dwell-ring').style.strokeDashoffset=String(176*(1-progress));if(progress>=1){fired=true;firedAtPoint={...smoothed};target.click();}}
    }
   }
  }catch(e){stopHands();options.onError(e);return;}
  requestAnimationFrame(loop);
 }
-export function stopHands(){request++;running=false;missing=true;stream?.getTracks().forEach(t=>t.stop());stream=null;const v=$('#hand-video');if(v)v.srcObject=null;const c=$('#hand-cursor');if(c)c.hidden=true;const p=$('#camera-panel');if(p)p.hidden=true;clearTarget();options.onStatus(false);}
+export function stopHands(){firedAtPoint=null;request++;running=false;missing=true;stream?.getTracks().forEach(t=>t.stop());stream=null;const v=$('#hand-video');if(v)v.srcObject=null;const c=$('#hand-cursor');if(c)c.hidden=true;const p=$('#camera-panel');if(p)p.hidden=true;clearTarget();options.onStatus(false);}

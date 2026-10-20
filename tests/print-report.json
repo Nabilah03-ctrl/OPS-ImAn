@@ -2,6 +2,70 @@
   "mazePathLength": 109,
   "reports": [
     {
+      "filename": "station-choice.pdf",
+      "pages": 1
+    },
+    {
+      "filename": "station-choice-ink.pdf",
+      "pages": 1
+    },
+    {
+      "filename": "station-match.pdf",
+      "pages": 1
+    },
+    {
+      "filename": "station-match-ink.pdf",
+      "pages": 1
+    },
+    {
+      "filename": "station-scramble.pdf",
+      "pages": 1
+    },
+    {
+      "filename": "station-scramble-ink.pdf",
+      "pages": 1
+    },
+    {
+      "filename": "station-blank.pdf",
+      "pages": 1
+    },
+    {
+      "filename": "station-blank-ink.pdf",
+      "pages": 1
+    },
+    {
+      "filename": "station-sentence.pdf",
+      "pages": 2
+    },
+    {
+      "filename": "station-sentence-ink.pdf",
+      "pages": 2
+    },
+    {
+      "filename": "mission-codes.pdf",
+      "pages": 1
+    },
+    {
+      "filename": "mission-codes-ink.pdf",
+      "pages": 1
+    },
+    {
+      "filename": "success-chest.pdf",
+      "pages": 1
+    },
+    {
+      "filename": "success-chest-ink.pdf",
+      "pages": 1
+    },
+    {
+      "filename": "kit-cover.pdf",
+      "pages": 3
+    },
+    {
+      "filename": "kit-cover-ink.pdf",
+      "pages": 3
+    },
+    {
       "filename": "maze-a3.pdf",
       "pages": 1
     },
@@ -24,14 +88,6 @@
     {
       "filename": "mission-cards-ink.pdf",
       "pages": 3
-    },
-    {
-      "filename": "challenge-cards.pdf",
-      "pages": 6
-    },
-    {
-      "filename": "challenge-cards-ink.pdf",
-      "pages": 6
     },
     {
       "filename": "base-cards.pdf",
@@ -123,11 +179,11 @@
     },
     {
       "filename": "answer-rubric.pdf",
-      "pages": 5
+      "pages": 6
     },
     {
       "filename": "answer-rubric-ink.pdf",
-      "pages": 5
+      "pages": 6
     },
     {
       "filename": "certificate.pdf",
@@ -138,12 +194,20 @@
       "pages": 1
     },
     {
-      "filename": "kit-cover.pdf",
-      "pages": 3
+      "filename": "station-search.pdf",
+      "pages": 2
     },
     {
-      "filename": "kit-cover-ink.pdf",
-      "pages": 3
+      "filename": "station-search-ink.pdf",
+      "pages": 2
+    },
+    {
+      "filename": "challenge-cards.pdf",
+      "pages": 6
+    },
+    {
+      "filename": "challenge-cards-ink.pdf",
+      "pages": 6
     }
   ],
   "failures": []

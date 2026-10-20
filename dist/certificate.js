@@ -1,13 +1,16 @@
 import {ITEMS} from './content.js';
+import {allStationsComplete} from './missions.js';
+import {clockText} from './engine.js';
 
 export const CERTIFICATE_VOICE='Tahniah! Kamu berjaya menyelesaikan misi OPS ImAn. Teruskan usaha menjadi wira imbuhan awalan!';
-export const CERTIFICATE_BADGES=[['Kenali Kata','book'],['Bina Perkataan','cards'],['Gunakan Kata','search'],['Semak dan Baiki','check'],['Pilih dan Beri Sebab','radio'],['Cipta Laporan Mini','pencil']];
+export const CERTIFICATE_BADGES=[['Pilih Jawapan','book'],['Padankan Kata','cards'],['Cari Perkataan','search'],['Susun Perkataan','check'],['Isi Tempat Kosong','radio'],['Bina Ayat','pencil']];
 export const CERT_WIDTH=1188,CERT_HEIGHT=840;
 const esc=(s='')=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const clean=s=>String(s??'').replace(/[\u0000-\u001f\u007f]/g,' ').replace(/\s+/g,' ').trim();
-export function certificateEligible(session){return !!session&&ITEMS.every(i=>session.records?.[i.id]?.complete===true);}
+export function certificateEligible(session){return !!session&&allStationsComplete(session)&&session.finalMission?.complete===true;}
 export function completionDate(session){
  if(!certificateEligible(session))return null;
+ if(session.finalMission?.completedAt)return session.finalMission.completedAt;
  if(session.completedAt&&!Number.isNaN(Date.parse(session.completedAt)))return session.completedAt;
  const dates=ITEMS.map(i=>session.records[i.id].completedAt).filter(d=>d&&!Number.isNaN(Date.parse(d)));
  return dates.length===ITEMS.length?new Date(Math.max(...dates.map(d=>Date.parse(d)))).toISOString():null;
@@ -16,7 +19,7 @@ export function ensureCertificate(session,settings={}){
  if(!certificateEligible(session))return null;
  const date=completionDate(session);if(date)session.completedAt=date;
  session.certificate??={displayName:clean(session.name),className:clean(session.className),teacherName:clean(settings.teacherName),schoolName:clean(settings.schoolName),ink:false};
- return {...session.certificate,completedAt:session.completedAt||null,avatar:session.avatar||'boy'};
+ return {...session.certificate,completedAt:session.completedAt||null,avatar:session.avatar||'boy',activeMs:session.finalMission?.activeMs??session.activeMs??0};
 }
 export function certificateFileName(name){const safe=clean(name).replace(/[<>:"/\\|?*]/g,'').replace(/[. ]+$/,'').replace(/\s+/g,'_').slice(0,120)||'Murid';return `Sijil_OPS_ImAn_${safe}.pdf`;}
 export function formattedCompletionDate(value){if(!value||Number.isNaN(Date.parse(value)))return '________________';return new Intl.DateTimeFormat('ms-MY',{timeZone:'Asia/Kuala_Lumpur',day:'numeric',month:'long',year:'numeric'}).format(new Date(value));}
@@ -51,15 +54,16 @@ export function certificateScene(details={},options={}){
  const baseline=329+(90-fit.lines.length*fit.lineHeight)/2+fit.size;
  fit.lines.forEach((line,i)=>text(line,594,baseline+i*fit.lineHeight,fit.size,'black',c.blue,'middle',{role:'student-name'}));
  const classText='Kelas: '+(clean(details.className)||'[KELAS]');text(classText,594,447,Math.min(19,700/Math.max(1,measure(classText,1,'bold'))),'bold');
- ['atas usaha dan kejayaan menyelesaikan enam misi','permainan OPS ImAn dalam pembelajaran','kata berimbuhan awalan.'].forEach((line,i)=>text(line,594,480+i*25,19));
+ ['Atas usaha dan kejayaan menyelesaikan enam misi','pembelajaran kata berimbuhan awalan','dalam permainan OPS ImAn.'].forEach((line,i)=>text(line,594,480+i*25,19));
  text('“Bijak Berbahasa, Sedia Membantu!”',594,572,21,'bold',c.blue);
+ text('6 daripada 6 stesen selesai · Masa aktif: '+clockText(details.activeMs||0),594,594,14,'bold',c.muted);
  circle(167,624,57,c.orange);
  nodes.push({kind:'image',src:'assets/v2/police-boy.png',x:97,y:547,w:140,h:154,ink});
  nodes.push({kind:'image',src:`assets/v2/police-${details.avatar==='hijab'?'hijab':'girl'}.png`,x:955,y:547,w:140,h:154,ink});
  nodes.push({kind:'image',src:'assets/v2/patrol-car.png',x:120,y:147,w:112,h:76,ink});
  nodes.push({kind:'image',src:'assets/v2/helicopter.png',x:956,y:141,w:112,h:82,ink});
  circle(1043,440,30,ink?c.white:'#e1f3ff',c.blue,6);circle(1043,440,21,undefined,c.gold,2);path('M1064 461L1091 488',undefined,c.blue,12);path('M1064 461L1091 488',undefined,c.gold,5);
- CERTIFICATE_BADGES.forEach(([label,icon],i)=>{const x=274+i*111;rect(x,605,103,84,13,i%2?c.light:c.mint,c.pale,1);path(ICONS[icon],undefined,c.blue,1.8,{x:x+36,y:615,scale:1.25});const lines=label==='Pilih dan Beri Sebab'?['Pilih dan','Beri Sebab']:label==='Semak dan Baiki'?['Semak dan','Baiki']:label==='Cipta Laporan Mini'?['Cipta Laporan','Mini']:label.split(' ');lines.forEach((line,j)=>text(line,x+51.5,663+j*15,12,'bold'));});
+ CERTIFICATE_BADGES.forEach(([label,icon],i)=>{const x=274+i*111;rect(x,605,103,84,13,i%2?c.light:c.mint,c.pale,1);path(ICONS[icon],undefined,c.blue,1.8,{x:x+36,y:615,scale:1.25});const lines=label==='Isi Tempat Kosong'?['Isi Tempat','Kosong']:label.split(' ');lines.forEach((line,j)=>text(line,x+51.5,663+j*15,12,'bold'));});
  text('Tarikh: '+formattedCompletionDate(details.completedAt),155,729,16,'bold',c.ink,'start');
  if(clean(details.schoolName)){const school=fitCertificateText(clean(details.schoolName),(t,s)=>measure(t,s,'regular'),{maxSize:16,minSize:11,maxWidth:480,maxLines:2,maxHeight:38});school.lines.forEach((line,i)=>text(line,155,754+i*school.lineHeight,school.size,'regular',c.muted,'start'));}
  text('Disahkan oleh:',930,711,15,'regular');path('M800 735H1060',undefined,c.muted,1.2);

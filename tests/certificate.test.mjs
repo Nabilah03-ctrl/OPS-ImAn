@@ -2,8 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {ITEMS} from '../dist/content.js';
 import {certificateEligible,completionDate,ensureCertificate,certificateFileName,fitCertificateText,certificateScene,CERTIFICATE_BADGES} from '../dist/certificate.js';
-const complete=()=>({name:'Nur Aisyah',className:'2 Bestari',records:Object.fromEntries(ITEMS.map((i,k)=>[i.id,{complete:true,completedAt:new Date(Date.UTC(2026,9,15,1,k)).toISOString(),attempts:4,hints:3,shownExample:true,accuracy:null}]))});
-test('all 24 challenges qualify, including aided and unreviewed open responses',()=>{
+const complete=()=>({finalMission:{complete:true},name:'Nur Aisyah',className:'2 Bestari',records:Object.fromEntries(ITEMS.map((i,k)=>[i.id,{complete:true,completedAt:new Date(Date.UTC(2026,9,15,1,k)).toISOString(),attempts:4,hints:3,shownExample:true,accuracy:null}]))});
+test('all 24 challenges and an open chest qualify, including aided and legacy responses',()=>{
  const s=complete();assert.equal(certificateEligible(s),true);delete s.records['P6-C4'];assert.equal(certificateEligible(s),false);s.completedLevels=[1,2,3,4,5,6];s.practice=[{id:'P6-C4',complete:true}];assert.equal(certificateEligible(s),false);assert.equal(ensureCertificate(s),null);
 });
 test('completion date derives from last completed challenge and stays fixed',()=>{
