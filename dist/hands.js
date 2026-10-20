@@ -1,19 +1,45 @@
 let firedAtPoint=null;
+let visionModule=null,visionAttempt=0,trackerLoading=null,frameRequest=0;
 let tracker=null,stream=null,running=false,request=0,lastFrame=-1,lastDetect=0,smoothed=null,raw=null,offset={x:0,y:0},target=null,dwellStart=0,fired=false,lastMove=0,missing=true,options={sensitivity:1.2,onStatus:()=>{},onMove:()=>{},onError:()=>{}};
 const $=s=>document.querySelector(s);
+async function loadVision(){
+ if(visionModule)return visionModule;
+ for(let attempt=0;attempt<3;attempt++){
+  const url=new URL('./vendor/vision_bundle.js',import.meta.url);
+  // A fresh URL lets a retry recover even when a browser remembers a failed import.
+  const retry=visionAttempt++;if(retry)url.searchParams.set('camera-retry',String(retry));
+  try{return visionModule=await import(url.href);}
+  catch(error){if(attempt===2)throw error;await new Promise(resolve=>setTimeout(resolve,700*(attempt+1)));}
+ }
+}
+async function prepareTracker(){
+ if(tracker)return tracker;
+ if(!trackerLoading)trackerLoading=(async()=>{
+  const {FilesetResolver,HandLandmarker}=await loadVision();
+  const files=await FilesetResolver.forVisionTasks(new URL('./vendor/wasm',import.meta.url).href);
+  return tracker=await HandLandmarker.createFromOptions(files,{baseOptions:{modelAssetPath:new URL('./vendor/hand_landmarker.task',import.meta.url).href},runningMode:'VIDEO',numHands:1,minHandDetectionConfidence:.55,minHandPresenceConfidence:.55,minTrackingConfidence:.55});
+ })().finally(()=>{trackerLoading=null;});
+ return trackerLoading;
+}
 function clearTarget(){target?.classList.remove('hand-hover');target=null;dwellStart=0;fired=false;const ring=$('.dwell-ring');if(ring)ring.style.strokeDashoffset='176';}
 export function handTracked(){return running&&!missing;}
 export function handSettings(o){Object.assign(options,o);}
 export function calibrateHand(){if(!raw)return false;offset={x:.5-raw.x,y:.5-raw.y};smoothed=null;clearTarget();return true;}
 export async function startHands(o={}){
- stopHands();Object.assign(options,o);const runId=++request;
+ stopHands();Object.assign(options,o);const runId=++request;let stage='camera';
  if(!window.isSecureContext||!navigator.mediaDevices?.getUserMedia)throw new Error('Kamera memerlukan HTTPS atau localhost. Kamu masih boleh menggunakan tetikus.');
  $('#camera-panel').hidden=false;$('#hand-status').textContent='Menyediakan kamera dan penjejakan…';
  try{
-  const s=await navigator.mediaDevices.getUserMedia({video:{width:640,height:480,facingMode:'user'},audio:false});if(runId!==request){s.getTracks().forEach(t=>t.stop());return;}stream=s;const video=$('#hand-video');video.srcObject=s;await video.play();
-  if(!tracker){const {FilesetResolver,HandLandmarker}=await import('./vendor/vision_bundle.js');const files=await FilesetResolver.forVisionTasks('./vendor/wasm');tracker=await HandLandmarker.createFromOptions(files,{baseOptions:{modelAssetPath:'./vendor/hand_landmarker.task'},runningMode:'VIDEO',numHands:1,minHandDetectionConfidence:.55,minHandPresenceConfidence:.55,minTrackingConfidence:.55});}
-  if(runId!==request)return;running=true;missing=true;lastFrame=-1;lastDetect=0;smoothed=null;offset={x:0,y:0};options.onStatus(false);requestAnimationFrame(loop);
- }catch(e){if(runId!==request)return;stopHands();throw new Error(e.name==='NotAllowedError'?'Kebenaran kamera ditolak. Pilih Guna Tetikus untuk meneruskan.':`Kamera atau model penjejakan tidak dapat dimulakan. ${e.message}`);}
+  const s=await navigator.mediaDevices.getUserMedia({video:{width:640,height:480,facingMode:'user'},audio:false});if(runId!==request){s.getTracks().forEach(t=>t.stop());return false;}stream=s;const video=$('#hand-video');video.srcObject=s;await video.play();
+  if(runId!==request)return false;stage='tracking';$('#hand-status').textContent='Kamera aktif. Memuatkan penjejakan tangan… Tunggu sebentar.';
+  await prepareTracker();
+  if(runId!==request)return false;running=true;missing=true;lastFrame=-1;lastDetect=0;smoothed=null;offset={x:0,y:0};options.onStatus(false);frameRequest=requestAnimationFrame(loop);return true;
+ }catch(e){
+  if(runId!==request)return false;stopHands();
+  const cameraMessages={NotAllowedError:'Kebenaran kamera belum diberikan. Buka tetapan laman pada ikon di sebelah alamat, benarkan Kamera, kemudian tekan Cuba Lagi.',NotFoundError:'Tiada kamera ditemui. Sambungkan kamera, kemudian tekan Cuba Lagi.',NotReadableError:'Kamera tidak dapat dibuka. Tutup aplikasi lain yang menggunakan kamera, kemudian tekan Cuba Lagi.'};
+  const error=new Error(stage==='tracking'?'Kamera boleh dibuka, tetapi fail penjejakan tangan belum berjaya dimuatkan. Pastikan sambungan internet tersedia, kemudian tekan Cuba Lagi.':cameraMessages[e.name]||'Kamera belum dapat dimulakan. Semak sambungan dan kebenaran kamera, kemudian tekan Cuba Lagi.',{cause:e});
+  error.detail=e.message;throw error;
+ }
 }
 function loop(now){
  if(!running)return;
@@ -29,6 +55,6 @@ function loop(now){
    }
   }
  }catch(e){stopHands();options.onError(e);return;}
- requestAnimationFrame(loop);
+ frameRequest=requestAnimationFrame(loop);
 }
-export function stopHands(){firedAtPoint=null;request++;running=false;missing=true;stream?.getTracks().forEach(t=>t.stop());stream=null;const v=$('#hand-video');if(v)v.srcObject=null;const c=$('#hand-cursor');if(c)c.hidden=true;const p=$('#camera-panel');if(p)p.hidden=true;clearTarget();options.onStatus(false);}
+export function stopHands(){cancelAnimationFrame(frameRequest);frameRequest=0;firedAtPoint=null;request++;running=false;missing=true;stream?.getTracks().forEach(t=>t.stop());stream=null;const v=$('#hand-video');if(v)v.srcObject=null;const c=$('#hand-cursor');if(c)c.hidden=true;const p=$('#camera-panel');if(p)p.hidden=true;clearTarget();options.onStatus(false);}
