@@ -16,11 +16,13 @@ Pada komputer lain, pasang Node.js 22 atau lebih baharu dan jalankan `node tools
 4. Selesaikan empat cabaran untuk memperoleh lencana dan satu digit kod. Kad Kod Saya menyimpan enam digit mengikut urutan stesen.
 5. Berhenti atau sambung mengikut kemampuan. Selepas enam stesen selesai, gabungkan digit di Pusat Kawalan untuk membuka Peti Kejayaan dan sijil. Kod salah boleh dibetulkan tanpa mengulang stesen.
 
+Soalan pilih jawapan, padanan dan isi tempat kosong menyediakan sekurang-kurangnya tiga pilihan. Kedudukan jawapan dan susunan awal bank kad dirawakkan bagi setiap aktiviti, kemudian disimpan supaya kekal ketika mencuba semula, menggunakan bantuan atau memuat semula permainan. Mod bimbingan dan **Kad Bantuan** memberikan petunjuk sambil mengekalkan tiga pilihan. Guru boleh menyediakan 3–6 pilihan berbeza dalam bank soalan. Latihan baharu mendapat susunan baharu.
+
 ## Peta dalaman stesen 3D
 
 Pratonton keenam-enam peta tersedia di `station-preview.html` atau melalui **Kenali lokasi → Pratonton enam stesen**. Peta misi utama dikekalkan. Balai mempunyai laluan U; bilik siasatan empat ruang kerja; trafik gelung jalan; keselamatan laluan berselekoh; garaj satu lorong; dan udara laluan menuju helipad.
 
-Watak Najmi, Putri dan Nabilah menggunakan ilustrasi kartun 3D semasa. Bangunan, perabot dan objek stesen mempunyai latar telus. Paparan soalan menggabungkan aksi 3D asal dengan lokasi dan objek cabaran berkenaan. Sumber dan prompt atlas baharu direkodkan dalam `docs/station-3d-art.md`.
+Watak Najmi, Putri dan Nabilah menggunakan ilustrasi kartun 3D semasa. Bangunan, perabot dan objek stesen mempunyai latar telus. Paparan soalan memfokuskan satu ilustrasi aksi 3D yang besar tanpa bangunan atau objek hiasan tambahan. Sumber dan prompt atlas baharu direkodkan dalam `docs/station-3d-art.md`.
 
 Pilih nombor atau objek untuk bergerak ke cabaran melalui laluan yang sah. Kekunci Enter/Space dan tuding-tahan tangan juga boleh digunakan. Pintu masih dibuka mengikut turutan. Pada telefon, kamera mengikuti anggota dan peta kecil menunjukkan kedudukan; butang kawalan berada di luar peta.
 
@@ -46,7 +48,7 @@ Audio lama dihentikan apabila audio baharu dimainkan. Muzik boleh dihidupkan dal
 
 ## Kamera dan akses
 
-Pilih mod Gerakan tangan untuk mengaktifkan kamera. Penjejakan MediaPipe menggunakan hujung jari telunjuk; tengah kanta ialah titik aktif. Tuding dan tahan butang selama 1.25 saat. Tiada cubitan diperlukan. Tahan kanta pada pad arah untuk bergerak perlahan. Kalibrasi dan sensitiviti tersedia.
+Pilih mod Gerakan tangan untuk mengaktifkan kamera. Penjejakan MediaPipe menggunakan hujung jari telunjuk; tengah kanta ialah titik aktif. Tuding dan tahan butang selama 1 saat. Tiada cubitan diperlukan. Tahan kanta pada pad arah untuk bergerak perlahan. Kalibrasi dan sensitiviti tersedia.
 
 Kamera memerlukan HTTPS atau localhost. Video diproses pada peranti, tidak dirakam atau dimuat naik. Apabila tangan hilang, watak dan masa aktif berhenti. Tetikus/sentuhan/papan kekunci tetap tersedia. Model telah diuji dapat dimuatkan dalam pelayar dengan kamera simulasi; ketepatan penjejakan pada kamera fizikal dan keadaan pencahayaan kelas perlu dicuba pada peranti sebenar.
 

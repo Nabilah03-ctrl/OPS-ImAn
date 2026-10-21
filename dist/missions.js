@@ -26,7 +26,7 @@ export function createItems(levels) {
  return levels.flatMap((level,l)=>CORE_WORDS.map((word,k)=>({
   ...word,id:`P${l+1}-C${k+1}`,level:l+1,index:k+1,type:GAME_TYPES[l],gameType:GAME_TYPES[l],skill:level.skill,
   prompt:SHORT_PROMPTS[l],instruction:ACTIVITY_INSTRUCTIONS[l],
-  choices:l===0?[['baca','membaca'],['bantu','membantu'],['mencari','membaca'],['membaca','mengawal','mencari']][k]:[word.word,CORE_WORDS[(k+1)%4].word,CORE_WORDS[(k+2)%4].word].sort(),
+  choices:l===0?[['baca','membaca','mencari'],['bantu','membantu','mengawal'],['mencari','membaca','membantu'],['membaca','mengawal','mencari']][k]:[word.word,CORE_WORDS[(k+1)%4].word,CORE_WORDS[(k+2)%4].word],
   answer:word.word,accepted:[word.word],sentence:word.parts.join(' '),blank:`Anggota polis ______ ${word.object}`,
   explanation:`${word.parts.join(' ')} ${word.base} menjadi ${word.word}.`,
   hint:[`Lihat gambar. ${word.parts.join(' ')}`,`Padankan kata dasar ${word.base} dengan ${word.word}.`,`Cari huruf pertama ${word.word[0].toUpperCase()}. Ikut satu baris atau lajur.`,`Mulakan dengan kepingan ${k===3?'me':'mem'===word.pieces[1]?'mem':'men'}.`,`Dengar ayat dan lihat gambar. ${word.parts.join(' ')}`,'Letakkan kad Anggota polis pada ruang pertama.'][l],
@@ -34,6 +34,21 @@ export function createItems(levels) {
  })));
 }
 export const normalize = value => String(value??'').trim().replace(/\s+/g,' ').toLocaleLowerCase('ms-MY');
+export function shuffled(values,random=Math.random){
+ const result=[...values];for(let i=result.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[result[i],result[j]]=[result[j],result[i]];}return result;
+}
+export function orderedChoices(item,state,random=Math.random){
+ // Repair older two-choice activities without changing answers or learning records.
+ const choices=[];for(const word of [item.answer,...(item.choices||[])])if(normalize(word)&&!choices.some(c=>normalize(c)===normalize(word)))choices.push(word);
+ for(const {word} of CORE_WORDS){if(choices.length>=3)break;if(!choices.some(c=>normalize(c)===normalize(word)))choices.push(word);}
+ const saved=state.choiceOrder;
+ if(!Array.isArray(saved)||saved.length!==choices.length||new Set(saved).size!==choices.length||saved.some(c=>!choices.includes(c)))state.choiceOrder=shuffled(choices,random);
+ return state.choiceOrder;
+}
+export function orderedIndices(values,state,key){
+ const saved=state[key];if(!Array.isArray(saved)||saved.length!==values.length||new Set(saved).size!==values.length||saved.some(i=>!Number.isInteger(i)||i<0||i>=values.length))state[key]=shuffled(values.map((_,i)=>i));
+ return state[key];
+}
 export function wordPaths(grid,word) {
  const target=word.toUpperCase(),paths=[];
  for(let y=0;y<grid.length;y++)for(let x=0;x<grid[y].length;x++)for(const [dx,dy] of [[1,0],[0,1]]){
@@ -71,7 +86,7 @@ export function activityAnswer(item,state){
 }
 export function activityCorrect(item,state){return normalize(activityAnswer(item,state))===normalize(item.type==='sentence'?item.sentence:item.answer);}
 export function validateItem(item){
- if(['choice','match','blank'].includes(item.type)&&(!item.choices.includes(item.answer)||item.choices.length<2||item.choices.length>3))throw Error('Sediakan 2–3 pilihan termasuk jawapan yang betul.');
+ if(['choice','match','blank'].includes(item.type)&&(!item.choices.includes(item.answer)||item.choices.length<3||item.choices.length>6||new Set(item.choices.map(normalize)).size!==item.choices.length))throw Error('Sediakan 3–6 pilihan yang berbeza, termasuk jawapan yang betul.');
  if(item.type==='search')makeWordSearch(item);
  if(item.type==='scramble'){
   const orders=[[0,1,2],[0,2,1],[1,0,2],[1,2,0],[2,0,1],[2,1,0]];

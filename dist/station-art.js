@@ -1,5 +1,3 @@
-import {stationLayout} from './station-layouts.js';
-
 // One transparent 3D atlas, cropped by SVG viewports without duplicating bitmap data.
 export const PROP_KINDS=['counter','report','clue-desk','evidence-board','files','magnifier','traffic-booth','signals','crossing','entrance','monitors','radio','hangar','flight-desk','tower','guard','help-desk','plant','fountain','tools'];
 // Tight display windows exclude neighboring sprites where the generated grid varies slightly.
@@ -19,7 +17,6 @@ export function stationObject(kind){
 
 export function actionScene(level,index,{className='station-question',label=''}={}){
  const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- const action=['reading','helping','searching','traffic'][index-1],kind=stationLayout(level).objects[index-1][0];
- const skies=['#d2f1ff','#e2edff','#d5f2ff','#d8f1e7','#e0e9f4','#cef0ff'],floors=['#c4dca4','#bdcfe3','#91c795','#b4d3a8','#b4c5d6','#b6d7de'];
- return `<svg xmlns="http://www.w3.org/2000/svg" class="${escape(className)}" data-scene="${level}-${index}" viewBox="0 0 600 390" role="img" aria-label="${escape(label)}"><defs><linearGradient id="scene-floor-${level}-${index}" x2="0" y2="1"><stop stop-color="${floors[level-1]}"/><stop offset="1" stop-color="#f3f7ed"/></linearGradient></defs><rect width="600" height="390" rx="24" fill="${skies[level-1]}"/><path d="M0 235Q300 195 600 241V366Q600 390 576 390H24Q0 390 0 366Z" fill="url(#scene-floor-${level}-${index})"/><image href="assets/v2/location-${level}.png" x="345" y="8" width="240" height="229" preserveAspectRatio="xMidYMid meet"/><g transform="translate(391 220) scale(.95)">${stationObject(kind)}</g><image href="assets/v2/action-${action}.png" x="${index===2?-9:0}" y="67" width="410" height="320" preserveAspectRatio="xMidYMid meet"/></svg>`;
+ const action=['reading','helping','searching','traffic'][index-1];
+ return `<svg xmlns="http://www.w3.org/2000/svg" class="${escape(className)}" data-scene="${level}-${index}" viewBox="0 0 600 390" role="img" aria-label="${escape(label)}"><rect width="600" height="390" rx="24" fill="#f1f6ff"/><image href="assets/v2/action-${action}.png" x="10" y="5" width="580" height="380" preserveAspectRatio="xMidYMid meet"/></svg>`;
 }

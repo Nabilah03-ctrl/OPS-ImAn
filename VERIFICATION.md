@@ -1,5 +1,14 @@
 # Semakan OPS ImAn
 
+## Fokus gambar, kawalan 1 saat dan pilihan rawak — 21 Oktober 2026
+
+- 24 ujian unit lulus, termasuk pilihan unik minimum tiga, kedudukan jawapan betul boleh berada di setiap slot, susunan kekal selepas muat semula/bantuan, dan pemulihan rekod lama dengan dua pilihan.
+- Ujian pelayar P2-C2 pada desktop dan telefon mengesahkan hanya satu ilustrasi aksi besar, tiga pilihan padanan dan jawapan betul masih diterima. Mod bimbingan dan Kad Bantuan mengekalkan tiga pilihan; percubaan salah dan muat semula tidak menukar susunan.
+- Gelung kawalan tangan sebenar diuji dengan bingkai dan mercu tangan simulasi: belum mengklik pada 920 ms, mengklik pada 1000 ms, dan tidak mengklik berulang semasa tuding kekal. Ini menguji masa pencetus, bukan ketepatan pengesanan kamera fizikal.
+- Aliran semua 24 cabaran dengan bank kad rawak, bantuan, enam kod, Peti Kejayaan, sijil PDF dan PDF kod sesi lulus tanpa ralat JavaScript.
+
+Bukti: `artifacts/qa-focus-controls.json`, `artifacts/qa-missions.json`, `tests/choices.test.mjs`, dan imej `artifacts/focused-helping-*`.
+
 ## Enam ruang stesen 3D — 21 Oktober 2026
 
 - Semua 20 ujian unit lulus: enam laluan berbeza, empat pintu berurutan, objek dan label tidak bertindih dengan laluan, serta migrasi koordinat lama tanpa mengubah bukti pembelajaran.

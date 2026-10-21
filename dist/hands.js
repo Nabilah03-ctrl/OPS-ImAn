@@ -51,7 +51,7 @@ function loop(now){
     if(firedAtPoint&&(!next||Math.hypot(smoothed.x-firedAtPoint.x,smoothed.y-firedAtPoint.y)>44))firedAtPoint=null;
     if(next!==target){clearTarget();target=next;dwellStart=now;fired=!!firedAtPoint;target?.classList.add('hand-hover');}
     if(target?.dataset.dir){if(now-lastMove>360){options.onMove(target.dataset.dir);lastMove=now;}}
-    else if(target&&!fired){const progress=Math.min((now-dwellStart)/1250,1);$('.dwell-ring').style.strokeDashoffset=String(176*(1-progress));if(progress>=1){fired=true;firedAtPoint={...smoothed};if(typeof target.click==='function')target.click();else target.dispatchEvent(new MouseEvent('click',{bubbles:true}));}}
+    else if(target&&!fired){const progress=Math.min((now-dwellStart)/1000,1);$('.dwell-ring').style.strokeDashoffset=String(176*(1-progress));if(progress>=1){fired=true;firedAtPoint={...smoothed};if(typeof target.click==='function')target.click();else target.dispatchEvent(new MouseEvent('click',{bubbles:true}));}}
    }
   }
  }catch(e){stopHands();options.onError(e);return;}
