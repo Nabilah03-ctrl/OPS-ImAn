@@ -1,5 +1,16 @@
 # Semakan OPS ImAn
 
+## Enam ruang stesen 3D — 21 Oktober 2026
+
+- Semua 20 ujian unit lulus: enam laluan berbeza, empat pintu berurutan, objek dan label tidak bertindih dengan laluan, serta migrasi koordinat lama tanpa mengubah bukti pembelajaran.
+- Ujian Chrome menyelesaikan kesemua 24 cabaran, enam digit kod dan Peti Kejayaan melalui input sebenar. Percubaan semula, bantuan, jeda, muat semula, sijil PDF dan PDF kod sesi lulus; tiada ralat JavaScript.
+- Enam peta diperiksa pada desktop, tablet dan telefon 390 px. Navigasi melalui papan kekunci dan sentuhan berfungsi; sasaran telefon sekurang-kurangnya 44 px, nisbah peta kekal, tiada limpahan mendatar atau permintaan aset gagal. Peta misi utama dan kandungan pembelajaran dibandingkan dengan versi terbitan sebelumnya dan kekal sama.
+- Aktiviti sentuhan, mod bimbingan, menaip, rekod lama, kod bermula dengan sifar, kurang animasi, sijil jimat dakwat A4 landskap dan cetakan tanpa butang lulus. Selepas persediaan cache, permainan dimuat semula dan sijil dijana tanpa rangkaian.
+- Model tangan setempat berjaya dimulakan dengan kamera simulasi; kehilangan tangan menghentikan masa dan pilihan tetikus berfungsi. Pengguna juga telah mengesahkan kamera fizikal boleh digunakan sebelum kemas kini visual ini.
+- Pratonton `station-preview.html` menggunakan renderer permainan sebenar. Watak dan bangunan v2 3D dikekalkan; 20 prop baharu berkongsi satu atlas PNG telus. Prompt dan sumber tersedia dalam `docs/station-3d-art.md`.
+
+Bukti: `artifacts/qa-stations.json`, `artifacts/qa-missions.json`, `artifacts/qa-mission-access.json`, serta imej `artifacts/station-*`. Keputusan lama di bawah ialah rekod sejarah.
+
 Semakan dilaksanakan pada 14 Oktober 2026 menggunakan Chrome pada Windows.
 
 - Ujian enjin: 12 konfigurasi maze (enam peringkat × standard/mudah) mempunyai laluan sah; empat pintu menghalang kemajuan sebelum cabaran berkaitan selesai; dinding tidak boleh ditembusi.

@@ -1,3 +1,4 @@
+import {interiorMap} from './station-maps.js';
 import {LEVELS} from './content.js';
 const escape=(s='')=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export const art=name=>`assets/v2/${name}.png`;
@@ -22,32 +23,4 @@ export function cityMap(session){
  <div class="city-patrol patrol-stop-${current}" aria-label="Kereta peronda di laluan misi ${current}"><img src="${art('patrol-car')}" alt="Kereta peronda POLIS"><span>Pasukan kamu</span></div>
  <span class="city-map-label">BANDAR POLIS IMAN</span><div class="city-traffic" aria-hidden="true"><i></i><i></i><i></i></div><div class="parked-helicopter" aria-hidden="true"><img src="${art('helicopter')}" alt=""><svg viewBox="0 0 120 24"><g class="helicopter-rotor"><path d="M4 12H116" stroke="#102a56" stroke-width="5" stroke-linecap="round"/><circle cx="60" cy="12" r="5" fill="#ffc400"/></g></svg></div></div></section>`;
 }
-const adjacent=(m,x,y)=>[[0,-1],[1,0],[0,1],[-1,0]].filter(([dx,dy])=>m.grid[y+dy]?.[x+dx]===0);
-export function roadMaze({maze:m,position:p,solved=[],route=[],items=[],avatar='boy',level=1,camera=false}){
- const cell=50,W=m.width*cell,H=m.height*cell,span=450,view=camera?`${Math.max(0,Math.min(W-span,p.x*cell+25-span/2))} ${Math.max(0,Math.min(H-span,p.y*cell+25-span/2))} ${Math.min(span,W)} ${Math.min(span,H)}`:`0 0 ${W} ${H}`;
- let svg=`<svg class="maze-svg road-maze" id="maze" viewBox="${view}" role="img" aria-label="Maze jalan raya ${escape(LEVELS[level-1].name)}. Lokasi kamu: lajur ${p.x}, baris ${p.y}." data-x="${p.x}" data-y="${p.y}"><defs><pattern id="park-grass" width="50" height="50" patternUnits="userSpaceOnUse"><rect width="50" height="50" fill="#32a858"/><path d="M11 16l3-5 3 5M34 38l3-4 3 4" stroke="#68c36a" fill="none" stroke-width="2"/></pattern></defs><rect width="${W}" height="${H}" fill="url(#park-grass)"/>`;
- const occupied=new Set();
- for(let y=0;y<m.height;y++)for(let x=0;x<m.width;x++){
-  const X=x*cell,Y=y*cell;
-  if(m.grid[y][x]){svg+=`<rect class="cell-wall" x="${X+2}" y="${Y+2}" width="46" height="46" rx="7" fill="#32a858"/>`;continue;}
-  svg+=`<rect class="cell-floor" x="${X}" y="${Y}" width="50" height="50" fill="#303642"/>`;
-  const dirs=adjacent(m,x,y);
-  for(const [dx,dy] of [[0,-1],[1,0],[0,1],[-1,0]]){
-   if(m.grid[y+dy]?.[x+dx]!==0){const side=dx===-1?`M${X+2} ${Y}V${Y+50}`:dx===1?`M${X+48} ${Y}V${Y+50}`:dy===-1?`M${X} ${Y+2}H${X+50}`:`M${X} ${Y+48}H${X+50}`;svg+=`<path d="${side}" stroke="#d7e4ed" stroke-width="4"/>`;}
-   else svg+=`<path d="M${X+25+dx*10} ${Y+25+dy*10}L${X+25+dx*22} ${Y+25+dy*22}" stroke="${dirs.length>2?'#ffc400':'#fff'}" stroke-width="2" opacity=".8"/>`;
-  }
-  if(dirs.length===4)svg+=`<circle cx="${X+25}" cy="${Y+25}" r="9" fill="none" stroke="#ffc400" stroke-width="2"/>`;
- }
- // Buildings and parks fit entirely on non-walkable blocks; the street grid stays exact.
- for(let y=1;y<m.height-2;y++)for(let x=1;x<m.width-2;x++){
-  const cells=[[x,y],[x+1,y],[x,y+1],[x+1,y+1]];
-  if(cells.every(([cx,cy])=>m.grid[cy]?.[cx]===1&&!occupied.has(`${cx},${cy}`))){cells.forEach(([cx,cy])=>occupied.add(`${cx},${cy}`));const building=(x+y)%3===0?level:(x+y)%6+1;svg+=`<rect x="${x*50+4}" y="${y*50+5}" width="92" height="90" rx="10" fill="#e7edf2" stroke="#102a56" stroke-width="1"/><image href="${art('location-'+building)}" x="${x*50+5}" y="${y*50+4}" width="90" height="90"/>`;}
- }
- for(let y=0;y<m.height;y++)for(let x=0;x<m.width;x++)if(m.grid[y][x]&&!occupied.has(`${x},${y}`)&&x>0&&y>0&&x<m.width-1&&y<m.height-1){svg+=`<path d="M${x*50+25} ${y*50+33}v10" stroke="#735125" stroke-width="5"/><circle cx="${x*50+25}" cy="${y*50+22}" r="14" fill="#087d42"/><circle cx="${x*50+21}" cy="${y*50+17}" r="8" fill="#5acb55"/>`;}
- route.forEach(c=>svg+=`<circle class="route" cx="${c.x*50+25}" cy="${c.y*50+25}" r="5"/>`);
- svg+=`<rect x="2" y="${m.start.y*50+2}" width="46" height="46" rx="4" fill="#303642" stroke="white" stroke-width="2"/><image href="${art('patrol-car')}" x="${(m.start.x-1)*50+2}" y="${m.start.y*50+2}" width="46" height="44"/><text x="${m.start.x*50+25}" y="${m.start.y*50+43}" text-anchor="middle" class="road-label">MULA</text><rect x="${m.end.x*50+3}" y="${m.end.y*50+3}" width="44" height="44" rx="8" fill="#174beb" stroke="#ffc400" stroke-width="3"/><text x="${m.end.x*50+25}" y="${m.end.y*50+28}" text-anchor="middle" class="road-label">TAMAT</text>`;
- m.points.forEach((pt,i)=>{const {challenge:c,gate:g}=pt,done=solved.includes(i);svg+=`<g class="${done?'open-gate':'gate'}"><rect x="${g.x*50+5}" y="${g.y*50+18}" width="40" height="14" rx="4" fill="${done?'#16a34a':'#ff8a00'}" stroke="#102a56" stroke-width="2"/><path d="M${g.x*50+11} ${g.y*50+20}l7 10m6-10 7 10" stroke="white" stroke-width="4"/><text x="${g.x*50+25}" y="${g.y*50+13}" text-anchor="middle" class="road-label">${done?'✓':'MISI '+(i+1)}</text></g><rect class="clue" x="${c.x*50+3}" y="${c.y*50+3}" width="44" height="44" rx="9" fill="white" stroke="#ffc400" stroke-width="3"/><image href="${art('action-'+(items[i]?.action||'reading'))}" x="${c.x*50+4}" y="${c.y*50+2}" width="42" height="40"/><circle cx="${c.x*50+40}" cy="${c.y*50+40}" r="10" fill="${done?'#16a34a':'#ffc400'}" stroke="#102a56"/><text x="${c.x*50+40}" y="${c.y*50+44}" text-anchor="middle" style="font-size:12px;fill:${done?'white':'#102a56'}">${done?'✓':i+1}</text>`;});
- svg+=`<g class="player" transform="translate(${p.x*50},${p.y*50})"><ellipse cx="25" cy="43" rx="21" ry="6" fill="#009dff" stroke="white" stroke-width="2"/><image href="${avatarArt(avatar)}" x="-6" y="-16" width="62" height="66"/></g></svg>`;
- if(camera){svg+=`<svg class="maze-minimap" viewBox="0 0 ${m.width*6} ${m.height*6}" role="img" aria-label="Peta kecil lokasi kamu"><rect width="100%" height="100%" fill="#168443"/>${m.grid.flatMap((row,y)=>row.map((v,x)=>v?'':`<rect x="${x*6}" y="${y*6}" width="6" height="6" fill="#fff"/>`)).join('')}<circle cx="${p.x*6+3}" cy="${p.y*6+3}" r="4" fill="#174beb" stroke="#ffc400" stroke-width="2"/></svg>`;}
- return svg;
-}
+export const roadMaze=interiorMap;

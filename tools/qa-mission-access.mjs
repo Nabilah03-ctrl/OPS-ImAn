@@ -3,13 +3,14 @@ import {PDFDocument} from 'pdf-lib';
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import {ITEMS} from '../dist/content.js';
+import {STATION_MAP_VERSION} from '../dist/station-layouts.js';
 import {makeMaze} from '../dist/engine.js';
 import {makeWordSearch} from '../dist/missions.js';
 const origin=process.env.QA_ORIGIN||'http://127.0.0.1:4189';
 const browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true,args:['--use-fake-device-for-media-stream','--use-fake-ui-for-media-stream']});
 const errors=[],checks=[];
 function fixture(level,{legacy=false,complete=false,mode='standard',code=['0','2','7','1','6','3']}={}){
- const s={id:'access-fixture',name:'Nur Aisyah Humaira Binti Abdullah',className:'2 Bestari',avatar:'hijab',mode,control:'mouse',createdAt:'2026-10-15T00:00:00Z',completedAt:null,certificate:null,level,positions:{[level]:makeMaze(level).points[0].challenge},records:{},stars:0,activeMs:93000,levelMs:{},completedLevels:[],powers:{hint:4,radio:4,path:6,two:3,double:2},powerLog:[],practice:[],audio:false,limit:4,cycleCount:0,easy:false,assist:['hint','radio','path','two','double'],targets:['membaca','membantu','mencari','mengawal'],teacher:{tp:'',date:'',notes:'Catatan guru lama'},codeDigits:code};
+ const s={id:'access-fixture',name:'Nur Aisyah Humaira Binti Abdullah',className:'2 Bestari',avatar:'hijab',mode,control:'mouse',createdAt:'2026-10-15T00:00:00Z',completedAt:null,certificate:null,level,stationMapVersions:{[level]:STATION_MAP_VERSION},positions:{[level]:makeMaze(level).points[0].challenge},records:{},stars:0,activeMs:93000,levelMs:{},completedLevels:[],powers:{hint:4,radio:4,path:6,two:3,double:2},powerLog:[],practice:[],audio:false,limit:4,cycleCount:0,easy:false,assist:['hint','radio','path','two','double'],targets:['membaca','membantu','mencari','mengawal'],teacher:{tp:'',date:'',notes:'Catatan guru lama'},codeDigits:code};
  for(const i of ITEMS.filter(i=>complete||i.level<level))s.records[i.id]={id:i.id,level:i.level,firstAnswer:i.answer,answers:[i.answer],attempts:3,hints:2,powers:['hint'],shownExample:true,complete:true,accuracy:true,wordCorrect:true,reasonAttempts:0,completedAt:'2026-10-15T01:00:00Z',evidence:'Selepas contoh'};
  return {saveVersion:legacy?1:2,currentId:s.id,settings:{},overrides:legacy?{'P1-C1':{prompt:'Suntingan guru terdahulu'}}:{},sessions:[s]};
 }

@@ -19,7 +19,7 @@ try{
  await p.setViewportSize({width:1440,height:1050});await fits();await p.screenshot({path:'artifacts/city-map-desktop.png',fullPage:true});
  await p.reload();await click('resume');await p.locator('#maze').waitFor();await click('maze-camera');assert.equal(await p.locator('.maze-minimap').count(),1);await p.setViewportSize({width:390,height:844});await fits();await p.screenshot({path:'artifacts/city-maze-mobile.png',fullPage:true});
  await click('city-guide');assert.ok(await p.locator('.city-guide-art').isVisible());await imagesReady();await click('close');
- for(let i=0;i<3;i++){await p.waitForTimeout(160);await p.keyboard.press('ArrowRight');}await p.locator('.question-text').waitFor();await imagesReady();await fits();await p.screenshot({path:'artifacts/city-question-mobile.png',fullPage:true});await p.locator('[data-action=answer][data-answer=membaca]').click();await click('question-next');
+ await p.locator('.station-stop[data-index="0"]').focus();await p.keyboard.press('Enter');await p.locator('.question-text').waitFor();await imagesReady();await fits();await p.screenshot({path:'artifacts/city-question-mobile.png',fullPage:true});await p.locator('[data-action=answer][data-answer=membaca]').click();await click('question-next');
  const saved=await p.evaluate(()=>JSON.parse(localStorage.getItem('ops-iman-v1')));const s=saved.sessions[0];assert.equal(s.avatar,'hijab');assert.equal(s.records['P1-C1'].complete,true);
  // Existing progress can resume at a later-stage coordinate, with the previous avatars.
  s.avatar='girl';s.level=5;s.positions[5]=makeMaze(5).start;s.completedLevels=[1,2,3,4];

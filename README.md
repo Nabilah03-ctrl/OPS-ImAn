@@ -16,6 +16,18 @@ Pada komputer lain, pasang Node.js 22 atau lebih baharu dan jalankan `node tools
 4. Selesaikan empat cabaran untuk memperoleh lencana dan satu digit kod. Kad Kod Saya menyimpan enam digit mengikut urutan stesen.
 5. Berhenti atau sambung mengikut kemampuan. Selepas enam stesen selesai, gabungkan digit di Pusat Kawalan untuk membuka Peti Kejayaan dan sijil. Kod salah boleh dibetulkan tanpa mengulang stesen.
 
+## Peta dalaman stesen 3D
+
+Pratonton keenam-enam peta tersedia di `station-preview.html` atau melalui **Kenali lokasi → Pratonton enam stesen**. Peta misi utama dikekalkan. Balai mempunyai laluan U; bilik siasatan empat ruang kerja; trafik gelung jalan; keselamatan laluan berselekoh; garaj satu lorong; dan udara laluan menuju helipad.
+
+Watak Najmi, Putri dan Nabilah menggunakan ilustrasi kartun 3D semasa. Bangunan, perabot dan objek stesen mempunyai latar telus. Paparan soalan menggabungkan aksi 3D asal dengan lokasi dan objek cabaran berkenaan. Sumber dan prompt atlas baharu direkodkan dalam `docs/station-3d-art.md`.
+
+Pilih nombor atau objek untuk bergerak ke cabaran melalui laluan yang sah. Kekunci Enter/Space dan tuding-tahan tangan juga boleh digunakan. Pintu masih dibuka mengikut turutan. Pada telefon, kamera mengikuti anggota dan peta kecil menunjukkan kedudukan; butang kawalan berada di luar peta.
+
+Sesi lama dipindahkan ke titik selamat pada laluan baharu sebelum cabaran belum selesai. Jawapan, bantuan, bintang, kod, sijil dan ulasan guru kekal. Koordinat lama disimpan dalam `legacyPositions`; versi peta direkodkan secara berasingan daripada versi rekod pembelajaran.
+
+Semakan: `node --test tests/*.test.mjs`, `node tools/qa-stations.mjs` dan `node tools/qa-missions.mjs`. Tetapkan `QA_ORIGIN` jika pelayan ujian bukan pada port 4189. Selepas mengubah fail `dist`, jana semula cache menggunakan `node tools/prepare-offline.mjs` sebelum penerbitan.
+
 ## Kurikulum dan pentaksiran
 
 SK: **5.2 Memahami dan menggunakan pembentukan kata mengikut konteks.**

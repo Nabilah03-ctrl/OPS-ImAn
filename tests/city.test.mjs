@@ -5,7 +5,7 @@ import {ITEMS,WORD_BANK,ENRICHMENT,CURRICULUM} from '../dist/content.js';
 import {makeMaze,routeTo,canMove} from '../dist/engine.js';
 import {missionStatus,avatarArt} from '../dist/visuals.js';
 test('mission upgrade preserves curriculum and the city has 24 tasks',()=>{assert.equal(ITEMS.length,24);assert.match(CURRICULUM.sp,/\(iii\)/);assert.ok(WORD_BANK.some(w=>w.word==='menyapu'));assert.equal(ENRICHMENT.length,3);});
-test('new intersections never bypass a challenge and old route coordinates remain walkable',()=>{
+test('station routes never bypass a challenge and every route coordinate remains walkable',()=>{
  for(const easy of [false,true])for(let level=1;level<=6;level++){
   const m=makeMaze(level,easy),solved=[];
   for(let n=0;n<4;n++){
