@@ -37,7 +37,7 @@ try {
       }));
       const issues=checks.pages.filter(p=>p.overflow>3||p.horizontal>3);
       if(issues.length||checks.broken.length||checks.clippedCards.length)failures.push({filename,issues,broken:checks.broken,clippedCards:checks.clippedCards});
-      if(entry.id==='challenge-cards'&&checks.cardCount!==24)failures.push({filename,error:'Not 24 challenge cards'});
+      if(entry.id==='challenge-cards'&&checks.cardCount!==30)failures.push({filename,error:'Not 30 challenge cards'});
       if(entry.teacher&&!checks.teacher)failures.push({filename,error:'Missing teacher-only label'});
       if(!checkOnly){
         const buffer=await page.pdf({path:path.join(output,filename),preferCSSPageSize:true,printBackground:true,displayHeaderFooter:false});

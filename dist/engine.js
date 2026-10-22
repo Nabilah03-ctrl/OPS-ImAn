@@ -7,7 +7,7 @@ export function makeMaze(level=1,easy=false){
  return {width,height,grid,path,points,start:path[0],end:path.at(-1),level:layout.id,easy,version:STATION_MAP_VERSION};
 }
 export function restoreStationPosition(session,maze=makeMaze(session.level,session.easy)){
- const key=String(session.level),solved=[0,1,2,3].filter(i=>session.records?.[`P${key}-C${i+1}`]?.complete);
+ const key=String(session.level),solved=[0,1,2,3,4].filter(i=>session.records?.[`P${key}-C${i+1}`]?.complete);
  session.positions??={};session.stationMapVersions??={};const old=session.positions[key];
  if(session.stationMapVersions[key]!==STATION_MAP_VERSION||!old||!canMove(maze,old.x,old.y,solved)||!routeTo(maze,maze.start,old,solved).length){
   if(old&&session.stationMapVersions[key]!==STATION_MAP_VERSION){session.legacyPositions??={};session.legacyPositions[key]??={...old};}

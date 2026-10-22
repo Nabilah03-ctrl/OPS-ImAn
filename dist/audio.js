@@ -9,7 +9,7 @@ function db(){return dbPromise??=new Promise((resolve,reject)=>{const r=indexedD
 export async function customAudio(text){try{const d=await db();return await new Promise(r=>{const q=d.transaction('clips').objectStore('clips').get(text);q.onsuccess=()=>r(q.result);q.onerror=()=>r(null);});}catch{return null;}}
 export async function saveRecording(text,file){if(!file.type.startsWith('audio/')||file.size>8*1024*1024)throw new Error('Pilih fail audio di bawah 8 MB.');const d=await db();await new Promise((r,j)=>{const t=d.transaction('clips','readwrite');t.objectStore('clips').put(file,text);t.oncomplete=r;t.onerror=()=>j(t.error);});}
 export async function removeRecording(text){const d=await db();await new Promise((r,j)=>{const t=d.transaction('clips','readwrite');t.objectStore('clips').delete(text);t.oncomplete=r;t.onerror=()=>j(t.error);});}
-export function voiceStatus(){const v=window.speechSynthesis?.getVoices().find(v=>v.lang.toLowerCase()==='ms-my');return v?`Suara peranti ms-MY: ${v.name}`:'Tiada suara peranti ms-MY. Klip sintesis Melayu disediakan; sebutan Malaysia belum disemak.';}
+export function voiceStatus(){const v=window.speechSynthesis?.getVoices().find(v=>v.lang.toLowerCase()==='ms-my');return v?`Suara peranti ms-MY: ${v.name}`:manifest.metadata?.voice?`Klip suara Malaysia: ${manifest.metadata.voice}`:'Klip sintesis Melayu disediakan.';}
 export async function speak(text,{force=false}={}){
  if(!text||(!ctx.enabled&&!force))return;stopAudio();const token=generation;
  async function one(t){

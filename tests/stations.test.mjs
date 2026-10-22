@@ -3,10 +3,10 @@ import assert from 'node:assert/strict';
 import {STATIONS,objectLabel,STATION_MAP_VERSION} from '../dist/station-layouts.js';
 import {makeMaze,routeTo,restoreStationPosition} from '../dist/engine.js';
 const intersects=(a,b)=>a.x<b.x+b.width&&a.x+a.width>b.x&&a.y<b.y+b.height&&a.y+a.height>b.y;
-test('six distinct routes have four ordered, reachable stops without shortcuts',()=>{
+test('six distinct routes have five ordered, reachable stops without shortcuts',()=>{
  assert.equal(new Set(STATIONS.map(s=>JSON.stringify(s.vertices))).size,6);
  for(const s of STATIONS){const m=makeMaze(s.id),solved=[];let p=m.start;
-  assert.equal(new Set(s.objects.map(o=>o[0])).size,4);
+  assert.equal(new Set(s.objects.map(o=>o[0])).size,5);
   for(const point of m.points){assert.ok(routeTo(m,p,point.challenge,solved).length);assert.equal(routeTo(m,p,m.end,solved).length,0);solved.push(point.index);p=point.challenge;}
   assert.ok(routeTo(m,p,m.end,solved).length);
  }
@@ -21,7 +21,7 @@ test('objects and their labels stay inside the map, clear of paths and each othe
  }
 });
 test('old saves move to a safe reachable point while evidence, rewards and certificates remain intact',()=>{
- for(let level=1;level<=6;level++)for(let complete=0;complete<=4;complete++){
+ for(let level=1;level<=6;level++)for(let complete=0;complete<=5;complete++){
   const s={level,positions:{[level]:{x:7,y:4}},records:{},stars:19,codeDigits:['0','2','7','1','6','3'],certificate:{displayName:'Aisyah'},teacher:{notes:'Kekalkan'}};
   for(let i=1;i<=complete;i++)s.records[`P${level}-C${i}`]={complete:true,attempts:3,hints:2};
   const evidence=structuredClone({records:s.records,stars:s.stars,code:s.codeDigits,certificate:s.certificate,teacher:s.teacher});

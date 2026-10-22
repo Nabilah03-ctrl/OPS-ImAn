@@ -1,3 +1,13 @@
+# Semakan Edisi 3 · 23 Oktober 2026
+
+Rujuk [perubahan dan semakan Edisi 3](docs/edition-3.md). 30 ujian unit lulus; permainan penuh 30 cabaran, kod akhir, sijil, 52 PDF dan 503 klip audio disemak. Imej setiap soalan turut diperiksa secara visual. Kamera fizikal dan pencetak sebenar tidak digunakan dalam ujian automatik.
+
+Reka bentuk sijil baharu disemak dalam pratonton dan PDF sebenar: A4 landskap satu halaman, teks vektor boleh diekstrak, versi berwarna/jimat dakwat, nama sehingga 160 aksara serta nama guru dan sekolah sehingga 120 aksara. Cetakan tidak mengandungi butang. Tarikh penyelesaian kekal, sijil boleh dibuka semula daripada rekod, pilihan senyap dan kurang animasi berfungsi. PDF juga berjaya dijana selepas muat semula tanpa rangkaian. Bukti tempatan: `artifacts/qa-certificate-design.json` dan `artifacts/qa-mission-access.json`.
+
+---
+
+Rekod semakan terdahulu di bawah merujuk edisi lama.
+
 # Semakan OPS ImAn
 
 ## Fokus gambar, kawalan 1 saat dan pilihan rawak — 21 Oktober 2026

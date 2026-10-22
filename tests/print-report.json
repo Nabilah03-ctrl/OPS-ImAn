@@ -2,43 +2,27 @@
   "mazePathLength": 109,
   "reports": [
     {
-      "filename": "station-choice.pdf",
-      "pages": 1
-    },
-    {
-      "filename": "station-choice-ink.pdf",
-      "pages": 1
-    },
-    {
       "filename": "station-match.pdf",
-      "pages": 1
-    },
-    {
-      "filename": "station-match-ink.pdf",
-      "pages": 1
-    },
-    {
-      "filename": "station-scramble.pdf",
-      "pages": 1
-    },
-    {
-      "filename": "station-scramble-ink.pdf",
-      "pages": 1
-    },
-    {
-      "filename": "station-blank.pdf",
-      "pages": 1
-    },
-    {
-      "filename": "station-blank-ink.pdf",
-      "pages": 1
-    },
-    {
-      "filename": "station-sentence.pdf",
       "pages": 2
     },
     {
-      "filename": "station-sentence-ink.pdf",
+      "filename": "station-match-ink.pdf",
+      "pages": 2
+    },
+    {
+      "filename": "station-search.pdf",
+      "pages": 3
+    },
+    {
+      "filename": "station-search-ink.pdf",
+      "pages": 3
+    },
+    {
+      "filename": "station-scramble.pdf",
+      "pages": 2
+    },
+    {
+      "filename": "station-scramble-ink.pdf",
       "pages": 2
     },
     {
@@ -91,11 +75,11 @@
     },
     {
       "filename": "base-cards.pdf",
-      "pages": 1
+      "pages": 4
     },
     {
       "filename": "base-cards-ink.pdf",
-      "pages": 1
+      "pages": 4
     },
     {
       "filename": "prefix-cards.pdf",
@@ -107,19 +91,11 @@
     },
     {
       "filename": "fullword-cards.pdf",
-      "pages": 2
+      "pages": 4
     },
     {
       "filename": "fullword-cards-ink.pdf",
-      "pages": 2
-    },
-    {
-      "filename": "picture-cards.pdf",
-      "pages": 1
-    },
-    {
-      "filename": "picture-cards-ink.pdf",
-      "pages": 1
+      "pages": 4
     },
     {
       "filename": "sentence-board.pdf",
@@ -127,14 +103,6 @@
     },
     {
       "filename": "sentence-board-ink.pdf",
-      "pages": 2
-    },
-    {
-      "filename": "sentence-cards.pdf",
-      "pages": 2
-    },
-    {
-      "filename": "sentence-cards-ink.pdf",
       "pages": 2
     },
     {
@@ -162,28 +130,76 @@
       "pages": 2
     },
     {
-      "filename": "worksheet.pdf",
-      "pages": 3
-    },
-    {
-      "filename": "worksheet-ink.pdf",
-      "pages": 3
-    },
-    {
       "filename": "observation.pdf",
-      "pages": 4
+      "pages": 6
     },
     {
       "filename": "observation-ink.pdf",
-      "pages": 4
+      "pages": 6
+    },
+    {
+      "filename": "station-choice.pdf",
+      "pages": 2
+    },
+    {
+      "filename": "station-choice-ink.pdf",
+      "pages": 2
+    },
+    {
+      "filename": "station-blank.pdf",
+      "pages": 2
+    },
+    {
+      "filename": "station-blank-ink.pdf",
+      "pages": 2
+    },
+    {
+      "filename": "station-sentence.pdf",
+      "pages": 3
+    },
+    {
+      "filename": "station-sentence-ink.pdf",
+      "pages": 3
+    },
+    {
+      "filename": "sentence-cards.pdf",
+      "pages": 3
+    },
+    {
+      "filename": "sentence-cards-ink.pdf",
+      "pages": 3
+    },
+    {
+      "filename": "challenge-cards.pdf",
+      "pages": 15
+    },
+    {
+      "filename": "challenge-cards-ink.pdf",
+      "pages": 15
+    },
+    {
+      "filename": "picture-cards.pdf",
+      "pages": 8
+    },
+    {
+      "filename": "picture-cards-ink.pdf",
+      "pages": 8
+    },
+    {
+      "filename": "worksheet.pdf",
+      "pages": 14
+    },
+    {
+      "filename": "worksheet-ink.pdf",
+      "pages": 14
     },
     {
       "filename": "answer-rubric.pdf",
-      "pages": 6
+      "pages": 12
     },
     {
       "filename": "answer-rubric-ink.pdf",
-      "pages": 6
+      "pages": 12
     },
     {
       "filename": "certificate.pdf",
@@ -192,22 +208,6 @@
     {
       "filename": "certificate-ink.pdf",
       "pages": 1
-    },
-    {
-      "filename": "station-search.pdf",
-      "pages": 2
-    },
-    {
-      "filename": "station-search-ink.pdf",
-      "pages": 2
-    },
-    {
-      "filename": "challenge-cards.pdf",
-      "pages": 6
-    },
-    {
-      "filename": "challenge-cards-ink.pdf",
-      "pages": 6
     }
   ],
   "failures": []

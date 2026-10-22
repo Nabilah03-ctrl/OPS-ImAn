@@ -17,6 +17,16 @@ export function stationObject(kind){
 
 export function actionScene(level,index,{className='station-question',label=''}={}){
  const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- const action=['reading','helping','searching','traffic'][index-1];
- return `<svg xmlns="http://www.w3.org/2000/svg" class="${escape(className)}" data-scene="${level}-${index}" viewBox="0 0 600 390" role="img" aria-label="${escape(label)}"><rect width="600" height="390" rx="24" fill="#f1f6ff"/><image href="assets/v2/action-${action}.png" x="10" y="5" width="580" height="380" preserveAspectRatio="xMidYMid meet"/></svg>`;
+ // Display windows follow the actual sprite edges, including props that extend past a cell.
+ const windows={
+  1:[[0,0,512,520],[512,0,512,520],[1024,0,512,520],[0,522,550,502],[565,522,465,502]],
+  2:[[0,0,512,512],[512,0,512,512],[1024,0,512,512],[0,520,512,504],[520,520,530,504]],
+  3:[[0,0,512,525],[512,0,512,525],[1024,0,512,525],[20,535,510,489],[550,535,550,489]],
+  4:[[0,0,512,512],[512,0,512,512],[1024,0,512,512],[0,530,512,494],[540,530,510,494]],
+  5:[[0,0,555,520],[570,0,454,520],[1050,0,486,520],[0,522,555,502],[570,522,480,502]],
+  6:[[0,0,512,512],[512,0,512,512],[1024,0,512,512],[0,520,545,504],[555,520,490,504]]
+ };
+ const [x,y,w,h]=windows[level]?.[index-1]||[0,0,512,512];
+ const clip='scene-window-'+level+'-'+index;
+ return `<svg xmlns="http://www.w3.org/2000/svg" class="${escape(className)}" data-scene="${level}-${index}" viewBox="${x} ${y} ${w} ${h}" role="img" aria-label="${escape(label)}" overflow="hidden"><defs><clipPath id="${clip}"><rect x="${x}" y="${y}" width="${w}" height="${h}"/></clipPath></defs><image clip-path="url(#${clip})" href="assets/actions30/station-${level}.png" width="1536" height="1024"/></svg>`;
 }

@@ -1,6 +1,8 @@
 # OPS ImAn
 
-Permainan maze imbuhan awalan untuk Bahasa Melayu Tahun 2 KSSR. Enam stesen dengan enam cara bermain, 24 cabaran, misi kod akhir dan sijil digital. Ilustrasi asal, 271 klip sintesis Melayu, penjejakan tangan pada peranti, rekod guru dan 26 jenis bahan cetakan dikekalkan atau ditambah.
+Permainan maze imbuhan awalan untuk Bahasa Melayu Tahun 2 KSSR. Enam stesen dengan enam cara bermain, 30 cabaran, misi kod akhir dan sijil digital. Ilustrasi asal, 354 teks aktif bersuara Malaysia, penjejakan tangan pada peranti, rekod guru dan 26 jenis bahan cetakan dikekalkan atau ditambah.
+
+Semak padanan semua gambar dan soalan melalui **Ruang Guru → Bank kandungan → Semak semua gambar dan soalan**.
 
 ## Mula bermain pada komputer ini
 
@@ -13,22 +15,22 @@ Pada komputer lain, pasang Node.js 22 atau lebih baharu dan jalankan `node tools
 1. Pilih Mula pengembaraan, isi nama dan kelas, pilih avatar dan kawalan.
 2. Cuba tutorial, kemudian pilih satu daripada enam lokasi.
 3. Bergerak menggunakan pad arah, sentuhan, anak panah atau WASD. Cari petunjuk bergambar dan jawab untuk membuka pintu. Salah jawapan tidak memadam kemajuan.
-4. Selesaikan empat cabaran untuk memperoleh lencana dan satu digit kod. Kad Kod Saya menyimpan enam digit mengikut urutan stesen.
+4. Selesaikan lima cabaran untuk memperoleh lencana dan satu digit kod. Kad Kod Saya menyimpan enam digit mengikut urutan stesen.
 5. Berhenti atau sambung mengikut kemampuan. Selepas enam stesen selesai, gabungkan digit di Pusat Kawalan untuk membuka Peti Kejayaan dan sijil. Kod salah boleh dibetulkan tanpa mengulang stesen.
 
-Soalan pilih jawapan, padanan dan isi tempat kosong menyediakan sekurang-kurangnya tiga pilihan. Kedudukan jawapan dan susunan awal bank kad dirawakkan bagi setiap aktiviti, kemudian disimpan supaya kekal ketika mencuba semula, menggunakan bantuan atau memuat semula permainan. Mod bimbingan dan **Kad Bantuan** memberikan petunjuk sambil mengekalkan tiga pilihan. Guru boleh menyediakan 3–6 pilihan berbeza dalam bank soalan. Latihan baharu mendapat susunan baharu.
+Soalan memilih awalan, padanan dan isi tempat kosong menyediakan tepat empat pilihan unik. Kedudukan jawapan dirawakkan bagi setiap aktiviti dan disimpan ketika mencuba semula, menggunakan bantuan atau memuat semula permainan. Bimbingan dan Kad Bantuan mengekalkan empat pilihan. Semua enam stesen terbuka sejak mula.
 
 ## Peta dalaman stesen 3D
 
-Pratonton keenam-enam peta tersedia di `station-preview.html` atau melalui **Kenali lokasi → Pratonton enam stesen**. Peta misi utama dikekalkan. Balai mempunyai laluan U; bilik siasatan empat ruang kerja; trafik gelung jalan; keselamatan laluan berselekoh; garaj satu lorong; dan udara laluan menuju helipad.
+Pratonton keenam-enam peta tersedia di `station-preview.html` atau melalui **Kenali lokasi → Pratonton enam stesen**. Peta misi utama dikekalkan. Balai mempunyai laluan U; bilik siasatan lima ruang kerja; trafik gelung jalan; keselamatan laluan berselekoh; garaj satu lorong; dan udara laluan menuju helipad.
 
 Watak Najmi, Putri dan Nabilah menggunakan ilustrasi kartun 3D semasa. Bangunan, perabot dan objek stesen mempunyai latar telus. Paparan soalan memfokuskan satu ilustrasi aksi 3D yang besar tanpa bangunan atau objek hiasan tambahan. Sumber dan prompt atlas baharu direkodkan dalam `docs/station-3d-art.md`.
 
 Pilih nombor atau objek untuk bergerak ke cabaran melalui laluan yang sah. Kekunci Enter/Space dan tuding-tahan tangan juga boleh digunakan. Pintu masih dibuka mengikut turutan. Pada telefon, kamera mengikuti anggota dan peta kecil menunjukkan kedudukan; butang kawalan berada di luar peta.
 
-Sesi lama dipindahkan ke titik selamat pada laluan baharu sebelum cabaran belum selesai. Jawapan, bantuan, bintang, kod, sijil dan ulasan guru kekal. Koordinat lama disimpan dalam `legacyPositions`; versi peta direkodkan secara berasingan daripada versi rekod pembelajaran.
+Kandungan Edisi 3 mempunyai soalan baharu. Rekod edisi terdahulu disimpan sebagai arkib bersama bintang, ulasan dan sijil; profil aktif memulakan 30 cabaran baharu. Arkib boleh disemak dalam Ruang Guru. Lihat [penerangan Edisi 3](docs/edition-3.md).
 
-Semakan: `node --test tests/*.test.mjs`, `node tools/qa-stations.mjs` dan `node tools/qa-missions.mjs`. Tetapkan `QA_ORIGIN` jika pelayan ujian bukan pada port 4189. Selepas mengubah fail `dist`, jana semula cache menggunakan `node tools/prepare-offline.mjs` sebelum penerbitan.
+Semakan: `node --test tests/*.test.mjs`, `node tools/qa-focus-controls.mjs` dan `node tools/qa-missions.mjs`. Tetapkan `QA_ORIGIN` jika pelayan ujian bukan pada port 4189. Selepas mengubah fail `dist`, jana semula cache menggunakan `node tools/prepare-offline.mjs` sebelum penerbitan.
 
 ## Kurikulum dan pentaksiran
 
@@ -42,7 +44,7 @@ Enam peringkat perkembangan kemahiran bukan TP1–TP6. Bintang ialah ganjaran pe
 
 ## Audio
 
-Keutamaan audio: rakaman guru yang dimuat naik → suara peranti `ms-MY` jika tersedia → klip sintesis Bahasa Melayu yang disertakan. **271 klip disertakan ialah sintesis bahasa `ms`; sebutan wilayah Malaysia belum disahkan atau disemak manusia.** Guru boleh menyemak dan menggantikan klip di Ruang Guru → Rakaman audio. Semua klip telah diuji boleh didekod dan tidak senyap; ini bukan pengesahan sebutan.
+Keutamaan audio: rakaman guru → suara peranti ms-MY → klip siap. 354 teks aktif menggunakan suara Malaysia ms-MY-YasminNeural; sejumlah 503 klip dalam manifest (termasuk klip terdahulu) diuji boleh didekod dan tidak senyap. Sebutan belum disemak manusia. Guru boleh menyemak dan menggantikan klip di Ruang Guru → Rakaman audio.
 
 Audio lama dihentikan apabila audio baharu dimainkan. Muzik boleh dihidupkan dalam tetapan dan diperlahankan ketika suara dibaca. Rakaman sendiri disimpan dalam IndexedDB dan tidak dimasukkan dalam sandaran JSON; simpan fail asal sendiri.
 

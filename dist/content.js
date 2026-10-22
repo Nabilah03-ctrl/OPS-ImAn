@@ -8,19 +8,10 @@ export const LEVELS = [
  {id:5,name:'Garaj dan Pusat Bantuan Polis',subtitle:'Pilih dan Beri Sebab',skill:'Menilai',color:'#FF8A00'},
  {id:6,name:'Pusat Kawalan Udara dan Helipad',subtitle:'Cipta Laporan Mini',skill:'Mencipta',color:'#174BEB'}
 ];
-export const WORD_BANK = [
- {base:'baca',word:'membaca',prefix:'mem-',action:'reading',note:'mem- + baca → membaca. Anggota polis membaca buku nota.'},
- {base:'bantu',word:'membantu',prefix:'mem-',action:'helping',note:'mem- + bantu → membantu. Anggota polis membantu penduduk.'},
- {base:'cari',word:'mencari',prefix:'men-',action:'searching',note:'men- + cari → mencari. Anggota polis mencari beg yang tercicir.'},
- {base:'catat',word:'mencatat',prefix:'men-',action:'writing',note:'men- + catat → mencatat. Anggota polis mencatat maklumat.'},
- {base:'kawal',word:'mengawal',prefix:'meng-',action:'traffic',note:'kawal → mengawal. Huruf k pada kata dasar digugurkan.'},
- {base:'ambil',word:'mengambil',prefix:'meng-',action:'taking',note:'meng- + ambil → mengambil. Anggota polis mengambil beg.'},
- {base:'tulis',word:'menulis',prefix:'men-',action:'writing',note:'tulis → menulis. Huruf t pada kata dasar digugurkan.'},
- {base:'sapu',word:'menyapu',prefix:'meny-',action:'sweeping',note:'sapu → menyapu. Huruf s pada kata dasar digugurkan.'},
- {base:'lawat',word:'melawat',prefix:'me-',action:'walking',note:'me- + lawat → melawat. Anggota polis melawat taman komuniti.'}
-];
+
 LEVELS.forEach((level,i)=>{level.subtitle=GAME_NAMES[i];level.mission=MISSION_NAMES[i];level.skill=['Kenal','Padankan','Cari','Susun','Gunakan','Bina'][i];});
 export const ITEMS = createItems(LEVELS);
+export const WORD_BANK = [...new Map(ITEMS.map(i=>[i.word,{base:i.base,word:i.word,prefix:i.prefix,action:i.action,note:i.explanation+' '+i.sentence}])).values()];
 export const ENRICHMENT = [
  {group:'ber-',base:'jalan',word:'berjalan',action:'walking',sentence:'Anggota polis berjalan ke taman.',note:'ber- + jalan → berjalan.'},
  {group:'di-',base:'baca',word:'dibaca',action:'reading',sentence:'Buku nota dibaca oleh anggota polis.',note:'di- + baca → dibaca. Awalan di- dieja rapat.'},

@@ -1,9 +1,10 @@
 import {ITEMS} from './content.js';
+import {LEGACY_ITEMS} from './legacy-content.js';
 import {allStationsComplete} from './missions.js';
 import {clockText} from './engine.js';
 
 export const CERTIFICATE_VOICE='Tahniah! Kamu berjaya menyelesaikan misi OPS ImAn. Teruskan usaha menjadi wira imbuhan awalan!';
-export const CERTIFICATE_BADGES=[['Pilih Jawapan','book'],['Padankan Kata','cards'],['Cari Perkataan','search'],['Susun Perkataan','check'],['Isi Tempat Kosong','radio'],['Bina Ayat','pencil']];
+export const CERTIFICATE_BADGES=[['Pilih Imbuhan','book'],['Padankan Kata','cards'],['Cari Perkataan','search'],['Susun Perkataan','check'],['Isi Tempat Kosong','radio'],['Bina Ayat','pencil']];
 export const CERT_WIDTH=1188,CERT_HEIGHT=840;
 const esc=(s='')=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const clean=s=>String(s??'').replace(/[\u0000-\u001f\u007f]/g,' ').replace(/\s+/g,' ').trim();
@@ -12,8 +13,9 @@ export function completionDate(session){
  if(!certificateEligible(session))return null;
  if(session.finalMission?.completedAt)return session.finalMission.completedAt;
  if(session.completedAt&&!Number.isNaN(Date.parse(session.completedAt)))return session.completedAt;
- const dates=ITEMS.map(i=>session.records[i.id].completedAt).filter(d=>d&&!Number.isNaN(Date.parse(d)));
- return dates.length===ITEMS.length?new Date(Math.max(...dates.map(d=>Date.parse(d)))).toISOString():null;
+ const items=session.archived?LEGACY_ITEMS:ITEMS;
+ const dates=items.map(i=>session.records[i.id]?.completedAt).filter(d=>d&&!Number.isNaN(Date.parse(d)));
+ return dates.length===items.length?new Date(Math.max(...dates.map(d=>Date.parse(d)))).toISOString():null;
 }
 export function ensureCertificate(session,settings={}){
  if(!certificateEligible(session))return null;
@@ -35,40 +37,63 @@ const star=(x,y,r)=>Array.from({length:10},(_,i)=>{const a=-Math.PI/2+i*Math.PI/
 const ICONS={book:'M2 3Q7 1 12 4Q17 1 22 3V21Q17 19 12 22Q7 19 2 21ZM12 4V22M5 7H9M5 11H9M15 7H19M15 11H19',cards:'M3 2H17V19H3ZM17 6H22V23H8V19M6 7H13M6 11H13',search:'M17 10A7 7 0 1 1 3 10A7 7 0 0 1 17 10M15 15L23 23',check:'M2 12L9 19L23 3',radio:'M6 7L4 1M4 7H21V23H4ZM8 11H17M8 15H17M8 19H12',pencil:'M3 18L17 4L22 9L8 23L2 24ZM14 7L19 12M3 18L8 23'};
 export function certificateScene(details={},options={}){
  const ink=!!options.ink,measure=options.measure||((s,size)=>s.length*size*.52),nodes=[];
- const c=ink?{blue:'#303030',gold:'#707070',light:'#ffffff',mint:'#ffffff',orange:'#ffffff',ink:'#222222',muted:'#555555',pale:'#dddddd',white:'#ffffff'}:{blue:'#174beb',gold:'#ffc400',light:'#edf6ff',mint:'#d8f4df',orange:'#ffedd4',ink:'#102a56',muted:'#435e80',pale:'#c9d9ed',white:'#ffffff'};
+ const c=ink?{blue:'#303030',gold:'#777777',light:'#ffffff',mint:'#ffffff',paper:'#ffffff',teal:'#333333',ink:'#222222',muted:'#555555',pale:'#dddddd',white:'#ffffff'}:{blue:'#174586',gold:'#dfac43',light:'#e3effc',mint:'#def3ef',paper:'#fcfdf9',teal:'#087f8c',ink:'#233f60',muted:'#5d7188',pale:'#d3e4ec',white:'#ffffff'};
  const path=(d,fill,stroke,width=1,extra={})=>nodes.push({kind:'path',d,fill,stroke,width,...extra});
  const rect=(x,y,w,h,r,fill,stroke,width=1)=>path(rounded(x,y,w,h,r),fill,stroke,width);
  const text=(value,x,y,size=18,weight='regular',color=c.ink,align='middle',extra={})=>nodes.push({kind:'text',value:clean(value),x,y,size,weight,color,align,...extra});
  const circle=(x,y,r,fill,stroke,width=1)=>nodes.push({kind:'circle',x,y,r,fill,stroke,width});
- rect(0,0,CERT_WIDTH,CERT_HEIGHT,0,c.white);rect(48,48,1092,744,30,c.light,c.blue,5);rect(59,59,1070,722,22,c.white,c.gold,2);rect(69,69,1050,702,16,undefined,c.pale,1);
- for(const x of [92,1096]){path(`M${x-12} 186h24v28h-18v28h18v28h-24m0 304h24v24h-18v30h18v20h-24`,undefined,c.pale,3);for(let j=0;j<3;j++){circle(x+(j%2?7:-7),306+j*23,3,c.pale);path(rounded(x+(j%2?3:-11),311+j*23,8,12,4),c.pale);}}
- for(const [x,y,r]of[[137,107,16],[1051,107,16],[198,149,9],[990,150,9],[128,665,12],[1062,653,12],[190,591,7],[1002,577,7]])path(star(x,y,r),ink?c.pale:'#f8db83');
- path('M552 83Q594 98 636 83V123Q630 153 594 165Q558 153 552 123Z',c.blue,c.gold,3);
- path(star(594,106,10),c.gold);text('MISI',594,133,14,'bold',c.white);text('SELESAI',594,150,14,'bold',c.white);
- text('OPS ImAn',594,191,20,'black',c.blue);
- text('SIJIL PENGHARGAAN',594,239,39,'black',c.blue);
- text('WIRA IMBUHAN AWALAN',594,271,20,'bold',c.muted);
- path('M438 288H750',undefined,c.gold,2);
- text('Dengan bangganya diberikan kepada',594,318,18);
- const name=clean(details.displayName)||'[NAMA MURID]',fit=fitCertificateText(name,(t,s)=>measure(t,s,'black'),{maxHeight:90});
- const baseline=329+(90-fit.lines.length*fit.lineHeight)/2+fit.size;
+ // Four drawing units equal one millimetre. Every decoration stays inside
+ // the 10 mm print-safe area, including the outside stroke of the frame.
+ rect(0,0,CERT_WIDTH,CERT_HEIGHT,0,c.white);
+ rect(44,44,1100,752,28,ink?c.white:c.blue,c.gold,2);
+ rect(57,57,1074,726,22,c.paper,c.gold,3);
+ path('M59 80Q59 59 81 59H257Q203 196 59 204Z',c.mint);
+ path('M931 59H1107Q1129 59 1129 81V204Q989 202 931 59Z',c.light);
+ path('M59 746Q594 802 1129 746V759Q1129 781 1107 781H81Q59 781 59 759Z',ink?c.white:'#e6f4f5');
+ path('M277 70H911M70 214V730M1118 214V730',undefined,c.pale,.8);
+ for(const x of [88,1100]){
+  path(`M${x-9} 292h18v24h-12v24h12v24h-18`,undefined,c.pale,1.5);
+  for(let j=0;j<3;j++){circle(x+(j%2?5:-5),392+j*21,2,c.pale);path(rounded(x+(j%2?2:-8),396+j*21,6,9,3),c.pale);}
+ }
+ for(const [x,y,r]of[[111,106,10],[276,104,6],[1076,108,10],[914,98,6],[185,230,6],[1002,229,6],[104,504,7],[1084,506,7]])path(star(x,y,r),c.gold);
+ path('M554 83Q594 96 634 83V123Q634 156 594 177Q554 156 554 123Z',ink?c.white:c.blue,c.gold,2.8);
+ path(star(594,109,10),c.gold);text('MISI',594,136,13,'bold',ink?c.ink:c.white);text('SELESAI',594,153,13,'bold',ink?c.ink:c.white);
+ text('OPS ImAn',594,204,22,'black',c.blue);
+ text('SIJIL PENGHARGAAN',594,249,40,'black',c.blue);
+ rect(364,265,460,34,17,ink?c.white:c.teal,ink?c.pale:undefined,1);
+ text('WIRA IMBUHAN AWALAN',594,288,18,'bold',ink?c.ink:c.white);
+ text('Dengan bangganya diberikan kepada',594,326,17,'regular',c.muted);
+ const name=clean(details.displayName)||'[NAMA MURID]',fit=fitCertificateText(name,(t,s)=>measure(t,s,'black'),{maxSize:60,maxWidth:840,maxHeight:88});
+ const baseline=342+(88-fit.lines.length*fit.lineHeight)/2+fit.size;
  fit.lines.forEach((line,i)=>text(line,594,baseline+i*fit.lineHeight,fit.size,'black',c.blue,'middle',{role:'student-name'}));
- const classText='Kelas: '+(clean(details.className)||'[KELAS]');text(classText,594,447,Math.min(19,700/Math.max(1,measure(classText,1,'bold'))),'bold');
- ['Atas usaha dan kejayaan menyelesaikan enam misi','pembelajaran kata berimbuhan awalan','dalam permainan OPS ImAn.'].forEach((line,i)=>text(line,594,480+i*25,19));
- text('“Bijak Berbahasa, Sedia Membantu!”',594,572,21,'bold',c.blue);
- text('6 daripada 6 stesen selesai · Masa aktif: '+clockText(details.activeMs||0),594,594,14,'bold',c.muted);
- circle(167,624,57,c.orange);
- nodes.push({kind:'image',src:'assets/v2/police-boy.png',x:97,y:547,w:140,h:154,ink});
- nodes.push({kind:'image',src:`assets/v2/police-${details.avatar==='hijab'?'hijab':'girl'}.png`,x:955,y:547,w:140,h:154,ink});
- nodes.push({kind:'image',src:'assets/v2/patrol-car.png',x:120,y:147,w:112,h:76,ink});
- nodes.push({kind:'image',src:'assets/v2/helicopter.png',x:956,y:141,w:112,h:82,ink});
- circle(1043,440,30,ink?c.white:'#e1f3ff',c.blue,6);circle(1043,440,21,undefined,c.gold,2);path('M1064 461L1091 488',undefined,c.blue,12);path('M1064 461L1091 488',undefined,c.gold,5);
- CERTIFICATE_BADGES.forEach(([label,icon],i)=>{const x=274+i*111;rect(x,605,103,84,13,i%2?c.light:c.mint,c.pale,1);path(ICONS[icon],undefined,c.blue,1.8,{x:x+36,y:615,scale:1.25});const lines=label==='Isi Tempat Kosong'?['Isi Tempat','Kosong']:label.split(' ');lines.forEach((line,j)=>text(line,x+51.5,663+j*15,12,'bold'));});
- text('Tarikh: '+formattedCompletionDate(details.completedAt),155,729,16,'bold',c.ink,'start');
- if(clean(details.schoolName)){const school=fitCertificateText(clean(details.schoolName),(t,s)=>measure(t,s,'regular'),{maxSize:16,minSize:11,maxWidth:480,maxLines:2,maxHeight:38});school.lines.forEach((line,i)=>text(line,155,754+i*school.lineHeight,school.size,'regular',c.muted,'start'));}
- text('Disahkan oleh:',930,711,15,'regular');path('M800 735H1060',undefined,c.muted,1.2);
- const teacher=clean(details.teacherName)||'[NAMA GURU]',teacherSize=Math.min(17,260/Math.max(1,measure(teacher,1,'bold')));
- text(teacher,930,754,teacherSize,'bold');text('Guru Bahasa Melayu',930,774,13,'regular',c.muted);
+ path('M419 449H554M634 449H769',undefined,c.gold,1.8);path(star(594,449,7),c.gold);
+ const classText='Kelas: '+(clean(details.className)||'[KELAS]');text(classText,594,476,Math.min(18,700/Math.max(1,measure(classText,1,'bold'))),'bold',c.teal);
+ ['atas usaha dan kejayaan menyelesaikan enam misi','permainan OPS ImAn dalam pembelajaran','kata berimbuhan awalan.'].forEach((line,i)=>text(line,594,506+i*22,17));
+ text('“Bijak Berbahasa, Sedia Membantu!”',594,581,20,'bold',c.blue);
+ rect(354,592,480,23,11,ink?c.white:c.mint,ink?c.pale:undefined,.7);
+ text(details.template?'Enam misi · Satu usaha yang membanggakan':'6 daripada 6 stesen selesai · Masa aktif: '+clockText(details.activeMs||0),594,608,12.5,'bold',c.teal);
+ nodes.push({kind:'image',src:'assets/v2/police-boy.png',x:98,y:537,w:132,h:174,ink});
+ nodes.push({kind:'image',src:`assets/v2/police-${details.avatar==='girl'?'girl':'hijab'}.png`,x:958,y:537,w:132,h:174,ink});
+ nodes.push({kind:'image',src:'assets/v2/patrol-car.png',x:107,y:127,w:143,h:96,ink});
+ nodes.push({kind:'image',src:'assets/v2/helicopter.png',x:938,y:121,w:148,h:103,ink});
+ const badgeColors=['#2368b5','#8056b5','#078693','#b57709','#25846b','#b94f78'];
+ CERTIFICATE_BADGES.forEach(([label,icon],i)=>{
+  const x=240+i*120,color=ink?c.ink:badgeColors[i];
+  rect(x,626,108,79,12,c.white,c.pale,.8);path(`M${x+3} 628H${x+105}`,undefined,color,4);
+  path(ICONS[icon],undefined,color,1.6,{x:x+41,y:638,scale:1.1});
+  const lines=label==='Isi Tempat Kosong'?['Isi Tempat','Kosong']:label.split(' ');
+  lines.forEach((line,j)=>text(line,x+54,681+j*14,11.5,'bold',color));
+ });
+ text('Tarikh: '+formattedCompletionDate(details.completedAt),111,741,14,'bold',c.ink,'start');
+ if(clean(details.schoolName)){
+  const school=fitCertificateText(clean(details.schoolName),(t,s)=>measure(t,s,'regular'),{maxSize:12,minSize:10,maxWidth:440,maxLines:2,maxHeight:28});
+  school.lines.forEach((line,i)=>text(line,111,760+i*school.lineHeight,school.size,'regular',c.muted,'start',{role:'school-name'}));
+ }
+ text('Disahkan oleh:',930,721,12,'regular',c.muted);path('M767 736H1093',undefined,c.muted,.8);
+ const teacher=clean(details.teacherName)||'[NAMA GURU]',teacherFit=fitCertificateText(teacher,(t,s)=>measure(t,s,'bold'),{maxSize:14,minSize:10,maxWidth:326,maxLines:2,lineHeight:1.1,maxHeight:25});
+ const teacherBaseline=739+(25-teacherFit.lines.length*teacherFit.lineHeight)/2+teacherFit.size;
+ teacherFit.lines.forEach((line,i)=>text(line,930,teacherBaseline+i*teacherFit.lineHeight,teacherFit.size,'bold',c.ink,'middle',{role:'teacher-name'}));
+ text('Guru Bahasa Melayu',930,779,12,'regular',c.muted);
  return nodes;
 }
 let measureCanvas;

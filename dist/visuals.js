@@ -5,12 +5,9 @@ export const art=name=>`assets/v2/${name}.png`;
 export const avatarArt=avatar=>art(`police-${['boy','girl','hijab'].includes(avatar)?avatar:'boy'}`);
 export function communityGallery(){return `<section class="community-gallery"><div class="section-title"><div><h2>Pasukan yang sedia membantu</h2><p>Kenali tugas dan peralatan dalam Bandar Polis ImAn.</p></div></div><div class="community-scenes">${[['action-crossing','Membantu murid melintas'],['action-returning','Memulangkan barang dijumpai'],['pose-radio','Berhubung melalui radio'],['pose-directions','Menunjukkan arah'],['pose-pilot','Pasukan kawalan udara']].map(([asset,title])=>`<figure><img src="${art(asset)}" alt="${title}" loading="lazy"><figcaption>${title}</figcaption></figure>`).join('')}</div><details class="equipment-collection"><summary>Kenali koleksi peralatan polis</summary><img src="${art('equipment')}" alt="Koleksi peralatan: gari sebagai objek berasingan, radio, buku nota, kanta, topi, lampu suluh, kon dan fail" loading="lazy"><p>Peralatan membantu pasukan menjalankan tugas dengan bertanggungjawab.</p></details></section>`;}
 export function missionStatus(session,level){
- if(!session)return {label:'Boleh dimainkan',state:'available'};
- if(session.completedLevels.includes(level)||[1,2,3,4].every(i=>session.records[`P${level}-C${i}`]?.complete))return {label:'Selesai',state:'done'};
- if(Object.values(session.records).some(r=>r.level===level)||session.level===level)return {label:'Sedang dimainkan',state:'current'};
- const complete=LEVELS.filter(l=>session.completedLevels.includes(l.id)||[1,2,3,4].every(i=>session.records[`P${l.id}-C${i}`]?.complete)).map(l=>l.id);
- const unlocked=Math.max(1,session.level,...complete.map(n=>n+1));
- return level<=unlocked?{label:'Boleh dimainkan',state:'available'}:{label:'Belum dibuka',state:'locked'};
+ const count=[1,2,3,4,5].filter(i=>session?.records?.[`P${level}-C${i}`]?.complete).length;
+ if(count===5)return {label:'Selesai · 5/5',state:'done'};
+ return {label:`${count}/5 cabaran · Boleh dimainkan`,state:count||session?.level===level?'current':'available'};
 }
 export function cityMap(session){
  const positions=[[16.5,4,25,2],[50,4,75,2],[83.5,4,75,35],[83.5,54,25,35],[50,54,25,68],[16.5,54,75,68]];
